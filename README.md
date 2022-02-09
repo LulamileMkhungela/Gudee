@@ -1,1 +1,2 @@
+<!-- Layout view structure -->
 # Gudee
