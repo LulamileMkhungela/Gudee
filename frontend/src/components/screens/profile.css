@@ -1,0 +1,28 @@
+
+.profileback{
+    margin-top: 60px;
+   width: 900px;
+   height: 200px;
+   position: relative;
+ margin-left:160px;
+ border-radius: 5px;
+
+}
+
+.profile-info{
+   margin-left:170px;
+  font-size: 15px;
+   font-family: sans-serif;
+}
+.rounded-circle{
+   margin-top: 0px;
+   width: 52px;
+   height: 52px;
+   position: relative;
+   left: 0;
+   margin: auto;
+   margin-bottom: 170px;
+   align-items: center;
+   margin-top:20px ;
+
+}
