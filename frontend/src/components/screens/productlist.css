@@ -1,0 +1,100 @@
+.wrapper{
+    height:265px;
+        
+      border-radius: 8px;
+        background-color: var(--white);
+        box-shadow: 0px 3px 12px 
+      #00000029;
+      width: 49%;
+    background-color: #090d1a;
+       margin-left: 160px;
+     margin-top: 65px;
+  position: relative;
+
+
+}
+.wrapper h1{
+  margin-top:20px;
+  margin-left: 40px;
+    color: rgb(151, 131, 131);
+}
+.iphone-img{
+    width: 340px;
+    height: 212px;
+  
+    position: relative;
+   
+  margin-top: 0px;
+ margin-left:400px;
+ 
+    
+}
+
+.btn-buy{
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-top: -50px;
+    width: 160px;
+    height: 40px;
+    border: none;
+    background-color: red;
+    color: #3c4358;
+    
+    font-size: 23px;
+    outline: none;
+   color:white;
+   position: absolute;
+}
+.btn-text{
+    border-radius: 5px;
+    margin-left: 200px;
+    margin-top: -50px;
+    width: 200px;
+    height: 40px;
+    list-style: none;
+    background-color: #d5d9ec;
+    color: #3c4358;
+    
+    font-size: 13px;
+    outline-color: none;
+   color:white;
+   position: absolute;
+   
+        box-shadow: 0px 3px 12px 
+      #413f3f29;
+
+}
+
+
+
+
+
+
+.all{
+  height: auto;
+flex :1;
+}
+.deals{
+  margin-left: 160px;
+  flex-wrap: wrap;
+ 
+  
+}
+.caterogy
+{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  margin-left: 2000px;
+}
+.sub-product{
+  top: 0%;
+  left: 0%;
+  right:0 ;
+  bottom: 0%;
+  margin: auto;
+  margin-top:600px ;
+  position: relative;
+  flex:1;
+  flex-direction: wrap;
+}
