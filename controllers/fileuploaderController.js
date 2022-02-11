@@ -11,7 +11,7 @@ const singleFileUpload = async (req, res, next) => {
             fileSize: fileSizeFormatter(req.file.size, 2)
         });
         await file.save();
-        res.status(201).send('File uploaded successfully');
+        res.status(201).send('Your image are uploaded successfully');
     } catch(error) {
         res.status(400).send(error.message);
     }

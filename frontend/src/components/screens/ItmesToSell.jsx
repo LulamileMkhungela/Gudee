@@ -86,8 +86,11 @@ const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
                 </span>          
             </div>
             <div className="seller_profile-info">
-            
-                <img className="img-product" src={capture} alt='wena' /> <br/>
+                {singleFiles.map((file, index) => 
+                    <div>
+                        <img className="img-product" src={`${file.filePath}`} alt='' />
+                    </div>
+                )} <br/>
                 <input className="input-item-seller" type="text" placeholder="Enter Item Title"/>
                 <input className="input-item-seller" type="text" placeholder="Enter Item Price"/>
                 <textarea className="textArea-item-seller">Enter Item Description</textarea><br/>
