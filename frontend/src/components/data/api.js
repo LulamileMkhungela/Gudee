@@ -16,3 +16,11 @@ export const getSingleFiles = async () => {
         throw error;
     }
 }
+
+export const productUserInfo = async () => {
+    try {
+        await axios.get('/api/person')
+    } catch (error) {
+        throw error;
+    }
+}
