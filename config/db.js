@@ -8,7 +8,7 @@ module.exports = () => {
             useUnifiedTopology: true
         }
 
-        mongoose.connect('mongodb://localhost:27017/Gude', connectionParams);
+        mongoose.connect('mongodb+srv://Gudee:Addmore%40Digital@cluster0.tisxh.mongodb.net/Gudee?retryWrites=true&w=majority', connectionParams);
         console.log('Database connected successfully');
     } catch (error) {
         console.log(error);
