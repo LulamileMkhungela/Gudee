@@ -21,7 +21,7 @@ const secondData = [
     {name: 'Used'},
     {name: 'New'},
 ]
-const ItmesToSell = () => {
+const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
     const [selects, setSelects] = useState('');
     const [singleFiles, setSingleFiles] = useState([]);
 
@@ -61,8 +61,8 @@ const ItmesToSell = () => {
                  <div>     
                     <div>   
                         <label>Select Single File</label>
-                        <input type="file" name="file" id="file" onChange={(e) => props.fileChange(e)} />
-                        <button type="button" onClick={() => props.Upload()} >Upload</button>
+                        <input type="file" name="file" id="file" onChange={(e) => SingleFileChange(e)} />
+                        <button type="button" onClick={() => uploadSingleFile()} >Upload</button>
                     </div>
                 </div>
                 </span> <br/>
