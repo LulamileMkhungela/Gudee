@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 import {singleFileUpload} from '../data/api'
 import FidgetSpinner from '../../images/FidgetSpinner.gif';
 import capture from '../../images/Capture2.PNG'
+import Books from '../pages/Books';
 import './sellerCart.css'
+import {getSingleFiles} from '../data/api';
+import { SingleFileChange, uploadSingleFile } from '../pages/Books';
+
 // Select Category Data
 const data =[
     {name: 'Freebies'},
@@ -19,96 +23,26 @@ const secondData = [
 ]
 const ItmesToSell = () => {
     const [selects, setSelects] = useState('');
-    const [singleFile, setSingleFile] = useState('');
-    const [multipleFiles, setMultipleFiles] = useState('');
-    const [title, setTitle] = useState('');
+    const [singleFiles, setSingleFiles] = useState([]);
 
-    const singleFileChange = (e) => {
-        setSingleFile(e.target.files[0]);
+    const getSingleFileslist = async () => {
+        try {
+            const fileslist = await getSingleFiles();
+            setSingleFiles(fileslist);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    const MultipleFileChange = (e) => {
-        setMultipleFiles(e.target.files)
-    }
-
-    const uploadSingleFile = async () => {
-        const formData = new FormData();
-        formData.append('file', singleFile);
-        await singleFileUpload(formData); 
-    }
-
-    const UploadMultipleFiles = async () => {
-        console.log(multipleFiles);
-    }
-
+    useEffect(() => {
+        getSingleFileslist();
+    }, []);
+    
     // Returned when the 'Books' field is chosen
     if (selects === 'Books') {
-        return (
-            <div className="itemcontainer">  
-                <div className="SellerCart">
-                    <select className= "category" onChange={(e)=> setSelects(e.target.value)}>
-                        <   option>-- Select Categor --</option>
-                        {data.map(item => {
-                            return <option >{item.name}</option>
-                        })}
-                    </select><br/>
-                    <img className="img-product" src={capture} alt='wena' /> <br/>
-                    <span className='img-product-span'>
-                        <div>     
-                            <div>   
-                                <label>Select Single File</label>
-                                <input type="file" name="file" id="file" onChange={(e) => singleFileChange(e)} />
-                                <button type="button" onClick={() => uploadSingleFile()} >Upload</button>
-                            </div>
-                            <div>
-                                <label htmlFor="">Title</label>
-                                <input type='text' onChange={(e) => setTitle(e.target.value)} placeholder="Enter title for your gallery" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label>Select Multiple Files</label>
-                                <input type="file" onChange={(e) => MultipleFileChange(e)} name="file" id="file"/>
-                                <button type="button" onClick={() => UploadMultipleFiles()}>Upload</button>
-                            </div>
-                            <div>
-                                <label htmlFor=""></label>
-                                <input type='text' />
-                            </div>
-                        </div>
-                    </span> <br/>
-                    <input className="input-item" type="text" placeholder="Enter Item Title"/><br/>
-                    <input className="input-item" type="text" placeholder="Enter ISBN Number"/><br/>
-                    <br />
-                    <textarea className="textArea-item">Enter Item Description</textarea><br/>
-                    <select className= "category">
-                        <option>-- Select Condition --</option>
-                        {secondData.map(item => {
-                            return <option>{item.name}</option>
-                        })}
-                    </select><br/>
-                    <input className="input-item" type="text" placeholder="Enter Item Price"/><br/>
-                    <input className="input-item" type="text" placeholder="Enter the number of items"/><br/>
-                    <input className="input-item" type="text" placeholder="Enter the Location"/><br/>
-                    <label>payment method </label><br/>
-                    <span className="buttons-payment" ><button className="button-pay" type="submit">cash</button><button className="button-pay">paypal</button>
-                    <button className="button-pay">Visa</button><button className="button-pay">exchange/negotiate</button></span><br/>
-                    <span className="post-item"><button className="item-draft" type="submit">Save as draft</button>
-                        <button className="item-post" type="submit">Post</button>
-                    </span>          
-                </div>
-                <div className="seller_profile-info">
-                    <img className="img-product" src={capture} alt='wena' /> <br/>
-                    <input className="input-item-seller" type="text" placeholder="Enter Item Title"/>
-                    <input className="input-item-seller" type="text" placeholder="Enter Item Price"/>
-                    <textarea className="textArea-item-seller">Enter Item Description</textarea><br/>
-                    <input className="input-item-seller" type="text" placeholder="Enter the number of items"/><br/>
-                    <input className="input-item-seller" type="text" placeholder="Enter the Location"/><br/>
-                profile
-                </div>
-            </div>
-        );
+       return <Books getsingle={() => getSingleFileslist()} />     
     }
+
    return (
         <div className="itemcontainer">  
             <div className="SellerCart">
@@ -118,10 +52,20 @@ const ItmesToSell = () => {
                         return <option >{item.name}</option>
                     })}
                 </select><br/>
-                <img className="img-product" src={capture} alt='wena' /> <br/>
+                {singleFiles.map((file, index) => 
+                    <div>
+                        <img className="img-product" src={`${file.filePath}`} alt='' />
+                    </div>
+                )} <br/>
                 <span className='img-product-span'>
-                 <input type="file" name="file" id="file_up"/>
-                    </span> <br/>
+                 <div>     
+                    <div>   
+                        <label>Select Single File</label>
+                        <input type="file" name="file" id="file" onChange={(e) => props.fileChange(e)} />
+                        <button type="button" onClick={() => props.Upload()} >Upload</button>
+                    </div>
+                </div>
+                </span> <br/>
                 <input className="input-item" type="text" placeholder="Enter Item Title"/><br/>
                 <br />
                 <textarea className="textArea-item">Enter Item Description</textarea><br/>
@@ -142,6 +86,7 @@ const ItmesToSell = () => {
                 </span>          
             </div>
             <div className="seller_profile-info">
+            
                 <img className="img-product" src={capture} alt='wena' /> <br/>
                 <input className="input-item-seller" type="text" placeholder="Enter Item Title"/>
                 <input className="input-item-seller" type="text" placeholder="Enter Item Price"/>
@@ -153,4 +98,6 @@ const ItmesToSell = () => {
         </div>
     );
 }
+
+
 export default ItmesToSell;
