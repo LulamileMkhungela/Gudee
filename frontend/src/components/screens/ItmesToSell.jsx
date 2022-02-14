@@ -4,10 +4,8 @@ import axios from 'axios';
 import {singleFileUpload} from '../data/api'
 import FidgetSpinner from '../../images/FidgetSpinner.gif';
 import capture from '../../images/Capture2.PNG'
-import Books from '../pages/Books';
 import './sellerCart.css'
 import {getSingleFiles} from '../data/api';
-import { SingleFileChange, uploadSingleFile } from '../pages/Books';
 
 // Select Category Data
 const data =[
@@ -21,26 +19,52 @@ const secondData = [
     {name: 'Used'},
     {name: 'New'},
 ]
-const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
+const ItmesToSell = () => {
     const [selects, setSelects] = useState('');
-    const [singleFiles, setSingleFiles] = useState([]);
+    const [title, setTitle] = useState('');
+    const [isbn, setIsbnNumber] = useState('');
+    const [description, setDescription] = useState('');
+    const [condition, setCondition] = useState('');
+    const [price, setPrice] = useState('');
+    const [items, setNumberOfItems] = useState('');
+    const [location, setLocation] = useState('');
+    const [payment, setPaymentMethod] = useState('');
+    const [people, setPeople] = useState([]);
 
-    const getSingleFileslist = async () => {
-        try {
-            const fileslist = await getSingleFiles();
-            setSingleFiles(fileslist);
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        axios.get('/api/getPerson').then((res)=> {
+            setPeople(res.data)
+        })
+    },[]);
+
+    const handleClick = (e) => {
+        const id = e.target.id;
+    }
+    
+    const pageSelection = () => {
+        // Returns ISBN field when 'Book' is chosen
+        if (selects === 'Books') {
+            return <input 
+                className="input-item" 
+                type="text" 
+                placeholder="Enter ISBN Number"  
+                onChange={(e) => setIsbnNumber(e.target.value)} 
+            />     
         }
     }
 
-    useEffect(() => {
-        getSingleFileslist();
-    }, []);
-    
-    // Returned when the 'Books' field is chosen
-    if (selects === 'Books') {
-       return <Books getsingle={() => getSingleFileslist()} />     
+    const Combination = () => {
+        axios.post('/api/person', {
+            selects: selects,
+            title: title,
+            isbn: isbn,
+            description: description,
+            condition: condition,
+            price: price,
+            items: items,
+            location: location,
+            payment: payment
+        });
     }
 
    return (
@@ -52,51 +76,50 @@ const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
                         return <option >{item.name}</option>
                     })}
                 </select><br/>
-                {singleFiles.map((file, index) => 
+                {/*singleFiles.map((file, index) => 
                     <div>
                         <img className="img-product" src={`${file.filePath}`} alt='' />
                     </div>
-                )} <br/>
+                )*/} <br/>
                 <span className='img-product-span'>
                  <div>     
                     <div>   
-                        <label>Select Single File</label>
-                        <input type="file" name="file" id="file" onChange={(e) => SingleFileChange(e)} />
-                        <button type="button" onClick={() => uploadSingleFile()} >Upload</button>
+                        <input type="file" name="file" id="file" />
                     </div>
                 </div>
                 </span> <br/>
-                <input className="input-item" type="text" placeholder="Enter Item Title"/><br/>
+                <input className="input-item" type="text" placeholder="Enter Item Title" onChange={(e) => setTitle(e.target.value)} /><br/>
+                {pageSelection()}
                 <br />
-                <textarea className="textArea-item">Enter Item Description</textarea><br/>
-                <select className= "category">
+                <textarea type="textarea" className="textArea-item" placeholder="Enter Item Description" onChange={(e) => setDescription(e.target.value)}/><br/>
+                <select className= "category"  onChange={(e) => setCondition(e.target.value)}>
                    <option>-- Select Condition --</option>
                    {secondData.map(item => {
                        return <option>{item.name}</option>
                    })}
                 </select><br/>
-                <input className="input-item" type="text" placeholder="Enter Item Price"/><br/>
-                <input className="input-item" type="text" placeholder="Enter the number of items"/><br/>
-                <input className="input-item" type="text" placeholder="Enter the Location"/><br/>
+                <input className="input-item" type="text" placeholder="Enter Item Price"  onChange={(e) => setPrice(e.target.value)}/><br/>
+                <input className="input-item" type="text" placeholder="Enter the number of items"  onChange={(e) => setNumberOfItems(e.target.value)}/><br/>
+                <input className="input-item" type="text" placeholder="Enter the Location"  onChange={(e) => setLocation(e.target.value)}/><br/>
                 <label>payment method </label><br/>
-                <span className="buttons-payment" ><button className="button-pay" type="submit">cash</button><button className="button-pay">paypal</button>
-                    <button className="button-pay">Visa</button><button className="button-pay">exchange/negotiate</button></span><br/>
+                <span className="buttons-payment" ><button className="button-pay" type="submit" value="cash" id="cash" onClick={handleClick} >cash</button><button className="button-pay" value="paypal" id="paypal" onClick={handleClick}>paypal</button>
+                    <button className="button-pay" value="visa" id="visa" onClick={handleClick}>Visa</button><button className="button-pay" value="exchange/negotiate" id="exchange" onClick={handleClick}>exchange/negotiate</button></span><br/>
                 <span className="post-item"><button className="item-draft" type="submit">Save as draft</button>
-                    <button className="item-post" type="submit">Post</button>
+                    <button className="item-post" type="submit" onClick={Combination} >Post</button>
                 </span>          
             </div>
             <div className="seller_profile-info">
-                {singleFiles.map((file, index) => 
+                {/*singleFiles.map((file, index) => 
                     <div>
                         <img className="img-product" src={`${file.filePath}`} alt='' />
                     </div>
-                )} <br/>
+                )*/} <br/>
+                
                 <input className="input-item-seller" type="text" placeholder="Enter Item Title"/>
                 <input className="input-item-seller" type="text" placeholder="Enter Item Price"/>
                 <textarea className="textArea-item-seller">Enter Item Description</textarea><br/>
                 <input className="input-item-seller" type="text" placeholder="Enter the number of items"/><br/>
                 <input className="input-item-seller" type="text" placeholder="Enter the Location"/><br/>
-                profile
             </div>
         </div>
     );

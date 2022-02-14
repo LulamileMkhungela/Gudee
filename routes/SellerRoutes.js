@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router();
 
 const {
-    ProductUserInfo, 
+    productUserInfo,
     getProductUserInfo
     } = require('../controllers/productUserInfoController');
 
-router.post('/person', ProductUserInfo);
+router.post('/person', productUserInfo);
 router.get('/getPerson', getProductUserInfo);
 
 module.exports = {

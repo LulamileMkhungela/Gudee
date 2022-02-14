@@ -1,20 +1,21 @@
-const SellerSchema = require('../models/productUserInfo');
+const sellerSchema = require('../models/productUserInfo');
 
 // Upload user information
-const ProductUserInfo = async (req, res, next) => {
-    try {
-        const userInformation = new SellerSchema({
+const productUserInfo = (req, res, next) => {
+    const userInformation = new sellerSchema({
+            selects: req.body.selects,
             title: req.body.title,
-            isbnNumber: req.body.isbnNumber,
+            isbn: req.body.isbn,
             description: req.body.description,
             condition: req.body.condition,
             price: req.body.price,
-            numberOfItems: req.body.numberOfItems,
+            items: req.body.items,
             location: req.body.location,
-            paymentMethod: req.body.paymentMethod,
-        });
-        await userInformation.save();
-        res.status(201).send('Your image has been uploaded successfully');
+            payment: req.body.payment,
+    });
+    try {
+        userInformation.save();
+        res.status(201).send('You successfully inserted your information');
     } catch(error) {
         res.status(400).send(error.message);
     }
@@ -23,7 +24,7 @@ const ProductUserInfo = async (req, res, next) => {
 // Get all the single files
 const getProductUserInfo = async (req, res, next) => {
     try {
-        const info = await SellerSchema.find();
+        const info = await sellerSchema.findOne();
         res.status(200).send(info)
     } catch(error) {
         res.status(400).send(error.message);
@@ -31,6 +32,6 @@ const getProductUserInfo = async (req, res, next) => {
 }
 
 module.exports = {
-    ProductUserInfo,
+    productUserInfo,
     getProductUserInfo
 }

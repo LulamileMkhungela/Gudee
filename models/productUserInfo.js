@@ -1,40 +1,47 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-const SellerSchema = new Schema({
+const sellerSchema = new Schema({
+    selects: {
+        type: String,
+        //required: false
+    },
     title: {
         type: String,
-        required: true
+        //required: false
     },
-    isbnNumber: {
+    isbn: {
         type: String,
-        required: true
+        //required: false
     },
     description: {
         type: String,
-        required: true
+        //required: false
     },
     condition: {
         type: String,
-        required: true
+        //required: false
     },
     price: {
-        type: Number,
-        required: true
+        type: String,
+        //required: false
     },
-    numberOfItems: {
-        type: Number,
-        required: true
+    items: {
+        type: String,
+        //required: false
     },
     location: {
         type: String,
-        required: true
+        //required: false
     },
-    paymentMethod: {
+    payment: {
         type: String,
-        required: true
+        //required: false
+    },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: 'students'
     }
 }, {timestamps: true});
 
-module.exports = mongoose.model('Seller', SellerSchema)
+module.exports = mongoose.model('seller', sellerSchema);
