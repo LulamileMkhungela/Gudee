@@ -15,17 +15,18 @@ const ProductUserInfo = async (req, res, next) => {
         });
         await userInformation.save();
         res.status(201).send('Your image has been uploaded successfully');
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }
 
+
 // Get all the single files
 const getProductUserInfo = async (req, res, next) => {
     try {
-        const info = await SellerSchema.find();
+        const info = await SellerSchema.find(); //Array of Objects
         res.status(200).send(info)
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }

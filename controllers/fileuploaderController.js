@@ -12,7 +12,7 @@ const singleFileUpload = async (req, res, next) => {
         });
         await file.save();
         res.status(201).send('Your image are uploaded successfully');
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }
@@ -37,7 +37,7 @@ const multipleFileUpload = async (req, res, next) => {
         });
         await multipleFiles.save();
         res.status(200).send('Files uploaded successfully')
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }
@@ -47,7 +47,7 @@ const getallSingleFiles = async (req, res, next) => {
     try {
         const files = await SingleFile.find();
         res.status(200).send(files)
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }
@@ -57,7 +57,7 @@ const getallmultipleFiles = async (req, res, next) => {
     try {
         const files = await MultipleFile.find();
         res.status(200).send(files)
-    } catch(error) {
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }

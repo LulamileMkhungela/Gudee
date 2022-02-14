@@ -31,5 +31,4 @@ router.patch('/update', auth, userCtrl.updateUser)
 // Social Login
 
 
-
 module.exports = router;

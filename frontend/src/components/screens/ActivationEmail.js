@@ -9,7 +9,7 @@ function ActivationEmail() {
     const [success, setSuccess] = useState('')
 
     useEffect(() => {
-        if(activation_token){
+        if (activation_token) {
             const activationEmail = async () => {
                 try {
                     const res = await axios.post('/user/activation', {activation_token})
@@ -20,7 +20,7 @@ function ActivationEmail() {
             }
             activationEmail()
         }
-    },[activation_token])
+    }, [activation_token])
 
     return (
         <div className="active_page">

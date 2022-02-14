@@ -1,224 +1,176 @@
-
-
 const router = require("express").Router();
 
 const User = require('../models/User');
-const crypto = require('crypto'); 
+const crypto = require('crypto');
 
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../controllers/sendMail');
 
-const { Error } = require('mongoose');
+const {Error} = require('mongoose');
 // Register
-router.post ( "/register", async (req,res,next) =>{
-   
+router.post("/register", async (req, res, next) => {
 
-    const signedUpUser= await new User({
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        email:req.body.email,
-        password:req.body.password
+
+    const signedUpUser = await new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password
     })
- 
-try {
 
-     await signedUpUser.save();
-     
+    try {
 
-      
-    sendToken(signedUpUser,200,res);
-  
+        await signedUpUser.save();
 
-    
-    
-} catch (error) {
-    res.status(500).json({
-        success:false,
-        error:error.message
-    });
-    
-}
+
+        sendToken(signedUpUser, 200, res);
+
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+
+    }
 });
 //Login
-router.post( "/login", async (req,res,next) =>{
+router.post("/login", async (req, res, next) => {
 
-    const {email,password}= req.body;
-    if(!email || !password){
-    res.status(400).json({success:false,error:"Please provide email and password"})
+    const {email, password} = req.body;
+    if (!email || !password) {
+        res.status(400).json({success: false, error: "Please provide email and password"})
     }
     try {
-        const user= await User.findOne({email}).select("+password");
+        const user = await User.findOne({email}).select("+password");
 
-        if(!user){
-            res.status(404).json({success:false,error:"invalid credintials"})
+        if (!user) {
+            res.status(404).json({success: false, error: "invalid credintials"})
 
 
         }
         const isMatched = await user.matchPasswords(password)
 
-        if(!isMatched){
-            res.status(404).json({success:false,error:"invalid credintials"})
+        if (!isMatched) {
+            res.status(404).json({success: false, error: "invalid credintials"})
 
 
         }
-        sendToken(user,201,res);
-        
+        sendToken(user, 201, res);
+
     } catch (error) {
         res.status(500).json({
-            success:false,
-            error:error.message
+            success: false,
+            error: error.message
         });
     }
 
 });
 //Forgot password
 
-router.post ( "/forgotpassword", async (req,res,next) =>{
+router.post("/forgotpassword", async (req, res, next) => {
 
-   const {email} = req.body;
-   try {
-    if(!email){
-        res.status(400).json({success:false,error:"Please provide email field"})
+    const {email} = req.body;
+    try {
+        if (!email) {
+            res.status(400).json({success: false, error: "Please provide email field"})
         }
-    const user = await Users.findOne({email})
-    if(!user) return res.status(400).json({success:false,error: "This email does not exist."})
+        const user = await Users.findOne({email})
+        if (!user) return res.status(400).json({success: false, error: "This email does not exist."})
 
-       const resetToken= user.getResetPasswordToken()
+        const resetToken = user.getResetPasswordToken()
 
-       await user .save();
-const reseturl = `http://localhost:3000/passwordreset/${resetToken}`;
+        await user.save();
+        const reseturl = `http://localhost:3000/passwordreset/${resetToken}`;
 
-const message= `<h1> You have requested a password reset </h1>
-<p> Please go to this link to reset your password </p>
-<a href=${reseturl } clicktracking = off>${reseturl}  </a>
-
-`
-       try {
+        const message = `<h1> You have requested a password reset </h1>
+                        <p> Please go to this link to reset your password </p>
+                        <a href=${reseturl} clicktracking = off>${reseturl}  </a>`
+        try {
             await sendEmail({
-                to: user.email, 
-                subject:"Email reset passord",
+                to: user.email,
+                subject: "Email reset passord",
                 text: messages
             });
-            res.status(200).json({success:true,data:"email sent"})
-           
-       } catch (error) {
-           user.getResetPasswordToken= undefined;
-           user.getResetPasswordExpire= undefined;
+            res.status(200).json({success: true, data: "email sent"})
 
-           await  user.save();
-          return res.status(400).json({success:false,error: "This email does not exist."})
-       }
-   } catch (error) {
-       next(error);
-   }
+        } catch (error) {
+            user.getResetPasswordToken = undefined;
+            user.getResetPasswordExpire = undefined;
+
+            await user.save();
+            return res.status(400).json({success: false, error: "This email does not exist."})
+        }
+    } catch (error) {
+        next(error);
+    }
 
 });
 // reset password
-router.post ( "/resetpassword", async (req,res,next) =>{
+router.post("/resetpassword", async (req, res, next) => {
 
     const resetPasswordToken = crypto.createHash("sha256").update(req.params.resetToken).digest("hex");
     try {
         const user = await User.findOne({
             resetPasswordToken,
-            resetPasswordExpire: {$gt:Date.now()}
+            resetPasswordExpire: {$gt: Date.now()}
         })
-        if(!user){
+        if (!user) {
 
-            return res.status(400).json({success:false,error:"invalid Reset Token ,400"});
+            return res.status(400).json({success: false, error: "invalid Reset Token ,400"});
         }
-       user.password= req.body.password;
-       user.resetPasswordToken=undefined;
-       user.resetPasswordExpire = undefined;
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
 
-       await user.save();
-       res.status(200).json({
-           success:true,
-           data:"password reset Success"
-    })
+        await user.save();
+        res.status(200).json({
+            success: true,
+            data: "password reset Success"
+        })
 
     } catch (error) {
         next(error)
     }
 
 
-
 });
 
-const sendToken=(user,statusCode, res)=>{
-    const token= user.getSignedToken();
-    res.status(statusCode).json({success:true,token})
+const sendToken = (user, statusCode, res) => {
+    const token = user.getSignedToken();
+    res.status(statusCode).json({success: true, token})
 
 
-} 
+}
 //update user profile
 
-router.post( "/update", async (req,res,next) =>{
+router.post("/update", async (req, res, next) => {
 
-    const  {avater}= req.body;
- try {
- 
-
-    await User.findOneAndUpdate({_id: req.params.id});
-    avater
-    res.json({success:true,data: "update  success"});
-
-    //  const user= await User.create({
- 
-    //      firstname,lastname,email,password
-    //  });
-    //  sendToken(user,200,res);
-     
-     
- } catch (error) {
-     res.status(500).json({
-         success:false,
-         error:error.message
-     });
-     
- }
- });
+    const {avater} = req.body;
+    try {
 
 
+        await User.findOneAndUpdate({_id: req.params.id});
+        avater
+        res.json({success: true, data: "update  success"});
+
+        //  const user= await User.create({
+
+        //      firstname,lastname,email,password
+        //  });
+        //  sendToken(user,200,res);
 
 
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+
+    }
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 // const{register,login,forgotpassword,resetpassword,update}= require('../controllers/auth')
 
 // router.route("/register").post(register);
@@ -230,20 +182,6 @@ router.post( "/update", async (req,res,next) =>{
 // router.route("/resetpassword/:resetToken").put(resetpassword);
 
 // router.route("/update").patch(update);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // the line below represent the line above just syntax
@@ -275,10 +213,6 @@ router.post( "/update", async (req,res,next) =>{
 //   req.logout();
 //   res.redirect(CLIENT_URL);
 // });
-
-
-
-
 
 
 // router.get("/facebook", passport.authenticate("facebook", { scope: ["profile"] }));

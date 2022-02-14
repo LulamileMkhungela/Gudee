@@ -14,15 +14,15 @@ const userSchema = new mongoose.Schema({
     },
     location: {
         type: String,
-        default:null,
-    
+        default: null,
+
     },
     phonenumber: {
-        type:Number,
+        type: Number,
         default: 0
     },
     Altnumber: {
-        type:Number,
+        type: Number,
         default: 0
     },
     email: {
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your password!"]
     },
-   
+
     avatar: {
         type: String,
         default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"

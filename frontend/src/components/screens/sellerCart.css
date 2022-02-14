@@ -1,81 +1,79 @@
-.SellerCart{
-  
-    height:fit-content;
-          display: grid;
-          grid-template-columns: 2fr 2fr;
-          background-color: var(--white);
-          box-shadow: 0px 3px 12px 
-        #00000029;
-       width: 30%;
-          padding: 20px;
-      margin-left: 25%;
-      margin-top: 60px;
-      
-  
-      
-      }
-.img-product-span {
-  flex-direction: row;
+.SellerCart {
+
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    background-color: var(--white);
+    box-shadow: 0px 3px 12px #00000029;
+    width: 30%;
+    padding: 20px;
+    margin-left: 25%;
+    margin-top: 60px;
+
+
 }
 
-  .category{
+.img-product-span {
+    flex-direction: row;
+}
+
+.category {
     margin-bottom: 5px;
     height: 40px;
     width: 250px;
     display: inline;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
+    box-shadow: 0px 3px 12px #00000029;
     border: none;
-  }
-  .img-product{
+}
+
+.img-product {
     margin-bottom: 5px;
     height: 250px;
     width: 250px;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
-    border:none;
-  
-  }
-  .input-item{
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
+
+}
+
+.input-item {
     margin-bottom: 5px;
     height: 40px;
     width: 250px;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
-    border:none;
-    }
-  
-  
-    .input-item-seller{
-      margin-bottom: 5px;
-      height: 40px;
-      width: 250px;
-      background-color: var(--white);
-       outline: none;
-      border:none;
-      border-bottom: 1px solid gray;
-      
-      }
-  
-  .textArea-item{
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
+}
+
+
+.input-item-seller {
+    margin-bottom: 5px;
+    height: 40px;
+    width: 250px;
+    background-color: var(--white);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+
+}
+
+.textArea-item {
     margin-bottom: 5px;
     margin-top: 0px;
     height: 50px;
     width: 250px;
     background-color: var(--white);
-    box-shadow: 0px 3px 12px 
-  #00000029;
-  border:none;
-  outline: none;
-    
-  }
-  .button-pay{
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
+    outline: none;
+
+}
+
+.button-pay {
     margin-bottom: 5px;
     color: #3a3e46;
-    
+
     height: 30px;
     width: auto;
     background-color: lightgray;
@@ -85,32 +83,34 @@
     margin-bottom: 20px;
     border-color: lightgray;
     background-color: var(--white);
-    box-shadow: 0px 3px 12px 
-  #00000029;
-  border:none;
-  outline: none;
-  
-   
-    
-  }
-  .buttons-payment{
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
+    outline: none;
+
+
+}
+
+.buttons-payment {
     display: flex;
     outline: none;
-   
-  }
-  .post-item{
+
+}
+
+.post-item {
     display: flex;
-    
-  
-  }
-  .item-draft{
+
+
+}
+
+.item-draft {
     color: #3a3e46;
     border-radius: 15px;
     border-color: red;
     margin-right: 50px;
     outline: none;
-  }
-  .item-post{
+}
+
+.item-post {
     background-color: red;
     color: white;
     border-radius: 15px;
@@ -118,39 +118,38 @@
     border-color: none;
     border: none;
     outline: none;
-  }
-  
-     .seller_profile-info{
-        height:auto;
-        display: grid;
-        display: flex;
-        flex-direction: column;
-       
-        background-color: var(--white);
-        box-shadow: 0px 3px 12px 
-      #00000029;
-     width: 30%;
-        padding: 20px;
+}
+
+.seller_profile-info {
+    height: auto;
+    display: grid;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white);
+    box-shadow: 0px 3px 12px #00000029;
+    width: 30%;
+    padding: 20px;
     margin-left: 1px;
     margin-top: 60px;
-  
-  
-  
-      }
-      .itemcontainer{
-        display: flex;
-        margin: 5px;
-      }
-      .textArea-item-seller{
-        margin-bottom: 5px;
-        margin-top: 0px;
-        height: 50px;
-        width: 250px;
-        background-color: var(--white);
-        box-shadow: 0px 3px 12px 
-      #00000029;
-      border:none;
-      outline: none;
-      border-bottom: 1px solid gray;
-  
-      }
+
+
+}
+
+.itemcontainer {
+    display: flex;
+    margin: 5px;
+}
+
+.textArea-item-seller {
+    margin-bottom: 5px;
+    margin-top: 0px;
+    height: 50px;
+    width: 250px;
+    background-color: var(--white);
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+
+}

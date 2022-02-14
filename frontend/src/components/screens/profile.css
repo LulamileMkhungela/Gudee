@@ -1,88 +1,93 @@
 
-.profileback{
+.profileback {
     margin-top: 60px;
-   width: 900px;
-   height: 200px;
-   position: relative;
- margin-left:160px;
- border-radius: 5px;
+    width: 900px;
+    height: 200px;
+    position: relative;
+    margin-left: 160px;
+    border-radius: 5px;
 
 }
 
 
-
-.profile-info{
-   margin-left:170px;
-  font-size: 15px;
-   font-family: sans-serif;
+.profile-info {
+    margin-left: 170px;
+    font-size: 15px;
+    font-family: sans-serif;
 }
-.image-size img{
-   margin-top: 0px;
-   width: 150px;
-   height: 150px;
-   position: relative;
-  margin-left: 500px;
-   border-radius: 50px;
 
-   align-items: center;
-   margin-top:-80px ;
+.image-size img {
+    margin-top: 0px;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-left: 500px;
+    border-radius: 50px;
+
+    align-items: center;
+    margin-top: -80px;
 
 }
 
 
 .tabs {
 
-   padding: 15px;
-   text-align: center;
-   width: 50%;
- 
-   cursor: pointer;
- 
-   box-sizing: content-box;
-   position: relative;
-   outline: none;
- display: inline;
- }
- .tab-active  {
-    color:#3c4358;
-  display: inline;
-   background: white;
-   border-bottom: 1px solid transparent;
-   border-bottom: 1px solid red;
- }
+    padding: 15px;
+    text-align: center;
+    width: 50%;
+
+    cursor: pointer;
+
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+    display: inline;
+}
+
+.tab-active {
+    color: #3c4358;
+    display: inline;
+    background: white;
+    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid red;
+}
 
 
+.content-tabs {
+    flex-grow: 1;
+}
 
- .content-tabs {
-   flex-grow : 1;
- }
- .content {
-   background: white;
-   padding: 20px;
-   width: 100%;
-   height: 100%;
-   display: none;
- }
- .content h2 {
-   font-size: 20px;
-   font-weight: 20px;
+.content {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.content h2 {
+    font-size: 20px;
+    font-weight: 20px;
 
 
-   color: #3c4358;
- }
- .content hr {
-   width: 100px;
-   height: 2px;
-   background: #222;
-   margin-bottom: 5px;
- }
- .content p i {
-   width: 100%;
-   height: 100%;
-   font-size: 20px;
-   justify-self: start;
+    color: #3c4358;
+}
 
- }
- .active-content {
-   display: block;
- }
+.content hr {
+    width: 100px;
+    height: 2px;
+    background: #222;
+    margin-bottom: 5px;
+}
+
+.content p i {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    justify-self: start;
+
+}
+
+.active-content {
+    display: block;
+}

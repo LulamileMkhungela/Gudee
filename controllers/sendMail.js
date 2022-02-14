@@ -28,7 +28,7 @@ const sendMail = (to, url, txt) => {
         service: 'gmail',
         host: 'host',
         port: 25,
-        secure : false, 
+        secure: false,
         auth: {
             type: 'OAuth2',
             user: SENDER_EMAIL_ADDRESS,
@@ -64,7 +64,7 @@ const sendMail = (to, url, txt) => {
     }
 
     smtpTransport.sendMail(mailOptions, (err, infor) => {
-        if(err) return console.log(err);
+        if (err) return console.log(err);
         return console.log(infor);
     })
 }
