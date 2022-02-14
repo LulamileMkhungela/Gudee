@@ -1,15 +1,15 @@
 const express = require('express');
 const {upload} = require('../helpers/filehelper');
 const {
-    ProductUserInfo, 
+    ProductUserInfo,
     getProductUserInfo
-    } = require('../controllers/productUserInfoController'); 
+} = require('../controllers/productUserInfoController');
 const {
-    singleFileUpload, 
-    multipleFileUpload, 
-    getallSingleFiles, 
+    singleFileUpload,
+    multipleFileUpload,
+    getallSingleFiles,
     getallmultipleFiles
-    } = require('../controllers/fileuploaderController');
+} = require('../controllers/fileuploaderController');
 const router = express.Router();
 
 router.post('/singleFile', upload.single('file'), singleFileUpload);

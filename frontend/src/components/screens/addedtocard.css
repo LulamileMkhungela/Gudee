@@ -1,80 +1,79 @@
-.cartcontainer{
-    height:280px;
-        display: flex;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        background-color: var(--white);
-        box-shadow: 0px 3px 12px 
-      #00000029;
-     width: 50%;
-        padding: 20px ;
+.cartcontainer {
+    height: 280px;
+    display: flex;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--white);
+    box-shadow: 0px 3px 12px #00000029;
+    width: 50%;
+    padding: 20px;
     margin-left: 15%;
     margin-top: 1px;
     position: absolute;
 
 
 }
-.img-product{
+
+.img-product {
     margin-bottom: 5px;
     height: 260px;
     width: 250px;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
-    border:none;
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
     margin-right: 1px;
     position: relative;
-   
-   
-   
-  
-  }
-  .seller-info
-  {
-    
-      margin: 0px;
+
+
+}
+
+.seller-info {
+
+    margin: 0px;
     margin-bottom: 5px;
     height: 260px;
     width: 800px;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
-    border:none;
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
     left: 0%;
-    
-   
+
+
     margin-top: 0px;
-    
-  }
-  .cart-heading
-  {
+
+}
+
+.cart-heading {
     border-top-left-radius: 8px;
     border-top-left-radius: 8px;
-  margin-top: 20px;
-    
+    margin-top: 20px;
+
     background-color: var(--white);
-    box-shadow: 0px 3px 12px 
-  #00000029;
- width: 50%;
- padding: 10px;
- margin-left: 15%;
+    box-shadow: 0px 3px 12px #00000029;
+    width: 50%;
+    padding: 10px;
+    margin-left: 15%;
     font-weight: bolder;
-  }
-  .date-display{
-      
-      margin-left: 300px;
-  }
-.price-display{
+}
+
+.date-display {
+
+    margin-left: 300px;
+}
+
+.price-display {
     margin-left: 300px;
     font-weight: bolder;
 
 }
-.price-rands{
+
+.price-rands {
     margin-left: 130px;
     font-weight: bolder;
 
 }
-.btn-click{
+
+.btn-click {
     border-radius: 5px;
     margin-left: 0px;
     margin-top: 45px;
@@ -86,75 +85,78 @@
     font-weight: bolder;
     font-size: 23px;
     outline: none;
-  
-    
+
+
 }
-.btn-proceed{
+
+.btn-proceed {
     background-color: #3c4358;
     height: 40px;
     border-radius: 5px;
     color: white;
     margin-top: 40px;
-   font-size: 23px;
-   font-weight: lighter;
-   margin-left: 5px;
+    font-size: 23px;
+    font-weight: lighter;
+    margin-left: 5px;
 }
-.trash{
-    font-size:30px;
-   background-color: white;
+
+.trash {
+    font-size: 30px;
+    background-color: white;
     margin-left: 10px;
     height: 40px;
     outline: none;
     position: relative;
-   border: none;
+    border: none;
 }
-.checkout-sum{
+
+.checkout-sum {
     margin-bottom: 5px;
     height: 170px;
     width: 270px;
     background-color: var(--white);
-      box-shadow: 0px 3px 12px 
-    #00000029;
-    border:none;
+    box-shadow: 0px 3px 12px #00000029;
+    border: none;
     margin-right: 1px;
-   margin-top: 270px;
+    margin-top: 270px;
     position: absolute;
     justify-content: center;
     text-align: center;
     margin-left: 10%;
-   
-   
-   
-  
-  }
-.checkout-sum  h1{
+
+
+}
+
+.checkout-sum h1 {
     color: #3c4358;
     text-align: center;
     font-size: 20px;
     font-weight: bolder;
 }
-.checkout-sum  h2{
+
+.checkout-sum h2 {
     color: #3c4358;
-   
+
     font-size: 15px;
     font-weight: bolder;
 }
-.layout{
-  height: 100vh;
+
+.layout {
+    height: 100vh;
 }
 
-.btn-proceed-sum{
-  color: #3c4358;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bolder;
-  margin-left: 20px;
-  background-color: #3c4358;
-  height: 40px;
-  border-radius: 5px;
-  color: white;
-  margin-top: 40px;
- font-size: 23px;
- font-weight: lighter;
+.btn-proceed-sum {
+    color: #3c4358;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 20px;
+    background-color: #3c4358;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 40px;
+    font-size: 23px;
+    font-weight: lighter;
 
 }

@@ -1,7 +1,8 @@
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
+
 const Schema = mongoose.Schema;
 
-const singleFileSchema = new Schema({ 
+const singleFileSchema = new Schema({
     fileName: {
         type: String,
         required: true
@@ -17,15 +18,7 @@ const singleFileSchema = new Schema({
     fileSize: {
         type: String,
         required: true
-    },
-    user: {
-        type: Schema.Types.ObjectId, 
-        ref: 'students'
     }
 }, {timestamps: true});
-
-const userInfoSchema = new Schema({
-
-})
 
 module.exports = mongoose.model('product-image', singleFileSchema);

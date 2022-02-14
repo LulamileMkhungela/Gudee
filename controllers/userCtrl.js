@@ -12,26 +12,26 @@ const {CLIENT_URL} = process.env
 
 const userCtrl = {
     register: async (req, res) => {
-        
-        try {
-            const {firstname ,lastname, email, password} = req.body
-            
-            if(!firstname || !lastname || !email || !password)
-                return res.status(400).json({success:false,error:"provide all fields"})
 
-            if(!validateEmail(email))
-                return res.status(400).json({success:false,error:"provide vaild email"})
+        try {
+            const {firstname, lastname, email, password} = req.body
+
+            if (!firstname || !lastname || !email || !password)
+                return res.status(400).json({success: false, error: "provide all fields"})
+
+            if (!validateEmail(email))
+                return res.status(400).json({success: false, error: "provide vaild email"})
 
             const user = await Users.findOne({email})
-            if(user) return res.status(400).json({success:false,error:"This email already exists."})
+            if (user) return res.status(400).json({success: false, error: "This email already exists."})
 
-            if(password.length < 6)
-                return res.status(400).json({success:false,error: "Password must be at least 6 characters."})
+            if (password.length < 6)
+                return res.status(400).json({success: false, error: "Password must be at least 6 characters."})
 
             const passwordHash = await bcrypt.hash(password, 12)
 
             const newUser = {
-               firstname, lastname, email, password: passwordHash
+                firstname, lastname, email, password: passwordHash
             }
 
             const activation_token = createActivationToken(newUser)
@@ -40,10 +40,11 @@ const userCtrl = {
             sendMail(email, url, "Verify your email address")
 
 
-            res.json({success:true,data: "Register Success! Please activate your email to start."})
+            res.json({success: true, data: "Register Success! Please activate your email to start."})
         } catch (error) {
-            return res.status(500).json({   success:false,
-                error:error.message
+            return res.status(500).json({
+                success: false,
+                error: error.message
             })
         }
     },
@@ -52,64 +53,67 @@ const userCtrl = {
             const {activation_token} = req.body
             const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET)
 
-            const {firstname,lastname, email, password} = user
+            const {firstname, lastname, email, password} = user
 
             const check = await Users.findOne({email})
-            if(check) return res.status(400).json({success:false,error:"This email already exists."})
+            if (check) return res.status(400).json({success: false, error: "This email already exists."})
 
             const newUser = new Users({
-                firstname,lastname, email, password
+                firstname, lastname, email, password
             })
 
             await newUser.save()
 
-            res.json({success:true,data: "Account has been activated!"})
+            res.json({success: true, data: "Account has been activated! u can now sell on Gude"})
 
         } catch (error) {
-            return res.status(500).json({success:false,error:"email not sent"})
+            return res.status(500).json({success: false, error: "email not sent"})
         }
     },
     login: async (req, res) => {
         try {
             const {email, password} = req.body
+            if (!email || !password)
+                return res.status(400).json({success: false, error: "provide all fields"})
+
             const user = await Users.findOne({email})
-            if(!user) return res.status(400).json({success:false,error: "This email does not exist."})
+            if (!user) return res.status(400).json({success: false, error: "This email does not exist."})
 
             const isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch) return res.status(400).json({success:false,error:"Password is incorrect."})
+            if (!isMatch) return res.status(400).json({success: false, error: "Password is incorrect."})
 
             const refresh_token = createRefreshToken({id: user._id})
             res.cookie('refreshtoken', refresh_token, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7 days
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
             })
 
-            res.json({success:true,data:"Login success!"})
+            res.json({success: true, data: "Login success!"})
         } catch (error) {
-            return res.status(500).json({success:false,error:error})
+            return res.status(500).json({success: false, error: error})
         }
     },
     getAccessToken: (req, res) => {
         try {
             const rf_token = req.cookies.refreshtoken
-            if(!rf_token) return res.status(400).json({msg: "Please login now!"})
+            if (!rf_token) return res.status(400).json({msg: "Please login now!"})
 
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-                if(err) return res.status(400).json({success:false,error: "Please login now!"})
+                if (err) return res.status(400).json({success: false, error: "Please login now!"})
 
                 const access_token = createAccessToken({id: user.id})
                 res.json({access_token})
             })
         } catch (error) {
-            return res.status(500).json({success:false,error:error})
+            return res.status(500).json({success: false, error: error})
         }
     },
     forgotPassword: async (req, res) => {
         try {
             const {email} = req.body
             const user = await Users.findOne({email})
-            if(!user) return res.status(400).json({success:false,error: "This email does not exist."})
+            if (!user) return res.status(400).json({success: false, error: "This email does not exist."})
 
             const access_token = createAccessToken({id: user._id})
             const url = `${CLIENT_URL}/user/reset/${access_token}`
@@ -130,7 +134,7 @@ const userCtrl = {
                 password: passwordHash
             })
 
-            res.json({success:true,data: "Password successfully changed!"})
+            res.json({success: true, data: "Password successfully changed!"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -181,7 +185,7 @@ const userCtrl = {
                 role
             })
 
-            res.json({success:true,data: "Update Success!"})
+            res.json({success: true, data: "Update Success!"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -190,18 +194,14 @@ const userCtrl = {
         try {
             await Users.findByIdAndDelete(req.params.id)
 
-            res.json({success:true,data: "Deleted Success!"})
+            res.json({success: true, data: "Deleted Success!"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     },
-    
-  
-    
+
+
 }
-
-
-
 
 
 function validateEmail(email) {

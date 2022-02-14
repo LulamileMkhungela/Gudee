@@ -26,6 +26,9 @@ const sendMail = (to, url, txt) => {
     const accessToken = oauth2Client.getAccessToken()
     const smtpTransport = nodemailer.createTransport({
         service: 'gmail',
+        host: 'host',
+        port: 25,
+        secure: false,
         auth: {
             type: 'OAuth2',
             user: SENDER_EMAIL_ADDRESS,
@@ -33,6 +36,10 @@ const sendMail = (to, url, txt) => {
             clientSecret: MAILING_SERVICE_CLIENT_SECRET,
             refreshToken: MAILING_SERVICE_REFRESH_TOKEN,
             accessToken
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false
         }
     })
 
@@ -57,8 +64,8 @@ const sendMail = (to, url, txt) => {
     }
 
     smtpTransport.sendMail(mailOptions, (err, infor) => {
-        if(err) return err;
-        return infor
+        if (err) return console.log(err);
+        return console.log(infor);
     })
 }
 

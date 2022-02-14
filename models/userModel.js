@@ -14,15 +14,15 @@ const userSchema = new mongoose.Schema({
     },
     location: {
         type: String,
-        required: [true, "Please enter your name!"],
-        trim: true
+        default: null,
+
     },
     phonenumber: {
-        type:Number,
+        type: Number,
         default: 0
     },
     Altnumber: {
-        type:Number,
+        type: Number,
         default: 0
     },
     email: {
@@ -35,10 +35,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your password!"]
     },
-    role: {
-        type: Number,
-        default: 0 // 0 = user, 1 = admin
-    },
+
     avatar: {
         type: String,
         default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
@@ -47,4 +44,4 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model("students", userSchema)
+module.exports = mongoose.model("Students", userSchema)

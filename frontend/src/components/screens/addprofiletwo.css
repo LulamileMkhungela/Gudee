@@ -3,7 +3,7 @@
     overflow-y: hidden;
 
 } */
-.addprofile-com{
+.addprofile-com {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -11,7 +11,7 @@
 
 }
 
-.addprofile-com .login-img{
+.addprofile-com .login-img {
 
     border: solid 0.1px lightgray;
     height: 600px;
@@ -19,7 +19,7 @@
 
 }
 
-.addprofile-com .login-img img{
+.addprofile-com .login-img img {
 
     height: 600px;
     width: 100%;
@@ -28,7 +28,7 @@
 }
 
 
-.addprofile-com .addprofile-form{
+.addprofile-com .addprofile-form {
 
     border: solid 0.1px lightgray;
     /* height: 100vh; */
@@ -36,14 +36,14 @@
 }
 
 .addprofile-form {
-position: relative;
+    position: relative;
     width: 100%;
     height: 100%;
 
 
 }
 
-.addprofile-form form{
+.addprofile-form form {
 
     width: 500px;
     margin: auto;
@@ -52,16 +52,17 @@ position: relative;
 }
 
 
-.addprofile-form form  img{
-position:relative;
+.addprofile-form form img {
+    position: relative;
     width: 100%;
     height: 150px;
-   
+
     left: 0px;
 
 }
-.addprofile-form form .avatar{
-    
+
+.addprofile-form form .avatar {
+
     width: 150px;
     height: 150px;
     overflow: hidden;
@@ -72,7 +73,8 @@ position:relative;
     border-radius: 50%;
     cursor: pointer;
 }
-.addprofile-form form .avatar img{
+
+.addprofile-form form .avatar img {
     width: 100%;
     height: 100%;
     display: block;
@@ -80,7 +82,8 @@ position:relative;
     background-color: gray;
 
 }
-.addprofile-form form .avatar span{
+
+.addprofile-form form .avatar span {
     position: absolute;
     bottom: -100%;
     left: 0;
@@ -93,12 +96,14 @@ position:relative;
     color: rgb(255, 140, 45);
     transition: 0.3s ease-in-out;
 }
-.addprofile-form form .avatar:hover span{
+
+.addprofile-form form .avatar:hover span {
     bottom: -15%;
 }
-.addprofile-form form  #file_up{
+
+.addprofile-form form #file_up {
     position: absolute;
-    top:0;
+    top: 0;
     left: -10px;
     width: 100%;
     height: 100%;
@@ -107,13 +112,9 @@ position:relative;
 }
 
 
+.addprofile-form form h2 {
 
 
-
-
-.addprofile-form form h2{
-
-    
     text-align: center;
     font-size: 1.7rem;
     text-transform: uppercase;
@@ -122,19 +123,22 @@ position:relative;
 
 
 }
+
 .addprofile-form form p {
 
-    color: #E2E6EA; 
+    color: #E2E6EA;
     position: relative;
     left: 100px;
 }
+
 .addprofile-form form p i {
 
     color: black;
     font-weight: bolder;
 
 }
-.change{
+
+.change {
     background-color: chartreuse;
     margin-left: 0px;
     color: crimson;
@@ -150,18 +154,18 @@ position:relative;
 
 }
 
-.addprofile-form form input{
+.addprofile-form form input {
 
     width: 100%;
     height: 30px;
     border: lightgray solid 1px;
     border-radius: 5px;
-  display: block inline;
-  outline: none;
-   
+    display: block inline;
+    outline: none;
+
 }
 
-.addprofile-form form span{
+.addprofile-form form span {
 
     float: right;
     color: lightgray;
@@ -169,7 +173,7 @@ position:relative;
 
 }
 
-.addprofile-form .btn{
+.addprofile-form .btn {
 
     background-color: red;
     color: white;
@@ -178,20 +182,21 @@ position:relative;
 
 }
 
-form-control{
+form-control {
     width: 50%;
 }
 
 
-  .buttons-reg-payment{
+.buttons-reg-payment {
     display: flex;
-    
-   
-  }
- .payment{
+
+
+}
+
+.payment {
     margin-bottom: 5px;
-    
-     color: #3a3e46;
+
+    color: #3a3e46;
     height: 30px;
     width: auto;
     justify-content: space-between;
@@ -201,55 +206,57 @@ form-control{
     margin-bottom: 20px;
     border-color: lightgray;
     background-color: var(--white);
-    box-shadow: 0px 3px 12px 
-  #00000029;
-  border:lightgray;
-  outline: none;
-  padding: 5px 5px;
-   
-    
-  }
+    box-shadow: 0px 3px 12px #00000029;
+    border: lightgray;
+    outline: none;
+    padding: 5px 5px;
 
-  .labelpayment{
-      position: relative;
-      color: lightgray;
-      font-family: sans-serif;
-      font-size: 15px;
-      border:0.5px solid darkgray;
-      border-bottom-right-radius: 16px;
+
+}
+
+.labelpayment {
+    position: relative;
+    color: lightgray;
+    font-family: sans-serif;
+    font-size: 15px;
+    border: 0.5px solid darkgray;
+    border-bottom-right-radius: 16px;
     border-top-right-radius: 16px;
     margin-right: 3px;
     padding: 3px 3px;
     background-color: var(--white);
-    box-shadow: 0px 3px 12px 
-  #00000029;
+    box-shadow: 0px 3px 12px #00000029;
 
-  }
-  .labelpayment:before{
-      content: "";
-      height: 10px;
-      width: 10px;
-      
-      border-radius: 50%;
-      margin-right: 5px;
-    
-      color: darkorange;
-  }
-  .errors{
-      color: red;
-    
-  }
-.payment[type="radio"]{
-    display:none;
-    
 }
 
-input[type="radio"]:checked + .labelpayment{
-    background-color:darkgray;
+.labelpayment:before {
+    content: "";
+    height: 10px;
+    width: 10px;
+
+    border-radius: 50%;
+    margin-right: 5px;
+
+    color: darkorange;
+}
+
+.errors {
+    color: red;
+
+}
+
+.payment[type="radio"] {
+    display: none;
+
+}
+
+input[type="radio"]:checked + .labelpayment {
+    background-color: darkgray;
     color: white;
 }
-input[type="radio"]:checked + .labelpayment:before{
+
+input[type="radio"]:checked + .labelpayment:before {
     height: 16px;
     width: 16px;
-    
+
 }

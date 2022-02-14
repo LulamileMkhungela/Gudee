@@ -1,6 +1,6 @@
-import { userSigninReducer } from "./Reducers/UserReducer";
+import {userSigninReducer} from "./Reducers/UserReducer";
 
-const reducer= combineReducers({
-userSignin: userSigninReducer
+const reducer = combineReducers({
+    userSignin: userSigninReducer
 
 });

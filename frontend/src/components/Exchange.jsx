@@ -4,10 +4,12 @@ import './Modal.css'
 
 const Exchange = () => {//
     return (
-         <div className="modalBackground">
+        <div className="modalBackground">
             <div className="modalContainer">
                 <div className="titleClosedBtn">
-                    <Link to="/addprofiletwo"><button> x </button></Link>
+                    <Link to="/addprofiletwo">
+                        <button> x</button>
+                    </Link>
                 </div>
                 <div className="title">
                     <h1>Exchange</h1>
@@ -17,7 +19,9 @@ const Exchange = () => {//
                 </div>
                 <div className="footer">
                     <button>Save</button>
-                    <Link to="/addprofiletwo"><button id="cancelBtn">Cancel</button></Link>
+                    <Link to="/addprofiletwo">
+                        <button id="cancelBtn">Cancel</button>
+                    </Link>
                 </div>
             </div>
         </div>
