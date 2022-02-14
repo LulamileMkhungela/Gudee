@@ -5,13 +5,14 @@ import loginimg from '../../images/photoun.jpg';
 import navlogo from '../../images/nav-logo.png';
 import  './reg.css'; 
 import axios from 'axios'
+import {loginsecond} from "../../Redux/LoginSecondRedux";
+import {useDispatch} from "react-redux"
 
-import { useContext } from 'react';
 
 import { useState,  useEffect } from 'react'
 
 
-import { useHistory } from "react-router";
+import { useHistory, } from "react-router";
 
 const Loginseller =({ history })=> {
 
@@ -19,9 +20,16 @@ const Loginseller =({ history })=> {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch= useDispatch();
       
   const registerHandler = async (e) => {
     e.preventDefault();
+
+    dispatch(loginsecond({
+      email:email,
+      password:password,
+      loggedIn:true,
+      }));
 
     const config = {
       header: {

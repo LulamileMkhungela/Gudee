@@ -2,21 +2,26 @@ import axios from 'axios'
 import loginimg from '../../images/photoun.jpg';
 import {Link} from 'react-router-dom'
 import navlogo from '../../images/nav-logo.png';
-
+import {useDispatch} from "react-redux"
 import './login.css'
-import { useState,  useEffect,useRef, useContext } from 'react';
-import { loginCall } from "../aoiCalls";
-import { AuthContext } from "../context/AuthContext";
+import { useState,  useEffect,useRef} from 'react';
+import {login} from "../../Redux/LoginFirstRedux";
 
 const Login=({history})=> {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch= useDispatch();
 
 
     const loginHandler = async (e) => {
       e.preventDefault();
+      dispatch(login({
+      email:email,
+      password:password,
+      loggedIn:true,
+      }));
   
       const config = {
         header: {
@@ -76,7 +81,7 @@ const Login=({history})=> {
 
                     <label>Email Address</label><br />
                     <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email}/><br /><br />
-                    {/* <div><p className='errors'>{formErrors.email}</p></div> */}
+                  
                     <label> Passoword </label><br />
                     <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                     

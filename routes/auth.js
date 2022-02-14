@@ -1,10 +1,7 @@
 
 
 const router = require("express").Router();
-<<<<<<<< HEAD:backend/routes/auth.js
 
-========
->>>>>>>> 25c2e7fcd43c62b589f74a0931047fca85946bd2:routes/auth.js
 const User = require('../models/User');
 const crypto = require('crypto'); 
 
@@ -14,6 +11,8 @@ const sendEmail = require('../controllers/sendMail');
 const { Error } = require('mongoose');
 // Register
 router.post ( "/register", async (req,res,next) =>{
+   
+
     const signedUpUser= await new User({
         firstname:req.body.firstname,
         lastname:req.body.lastname,
@@ -78,6 +77,9 @@ router.post ( "/forgotpassword", async (req,res,next) =>{
 
    const {email} = req.body;
    try {
+    if(!email){
+        res.status(400).json({success:false,error:"Please provide email field"})
+        }
     const user = await Users.findOne({email})
     if(!user) return res.status(400).json({success:false,error: "This email does not exist."})
 

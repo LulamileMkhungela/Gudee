@@ -95,7 +95,9 @@ function Books(props) {
             <textarea className="textArea-item-seller">Enter Item Description</textarea><br/>
             <input className="input-item-seller" type="text" placeholder="Enter the number of items"/><br/>
             <input className="input-item-seller" type="text" placeholder="Enter the Location"/><br/>
+        <div>
             profile
+        </div>
         </div>
     </div>
   )

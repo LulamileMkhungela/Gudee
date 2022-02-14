@@ -63,7 +63,7 @@ const userCtrl = {
 
             await newUser.save()
 
-            res.json({success:true,data: "Account has been activated!"})
+            res.json({success:true,data: "Account has been activated! u can now sell on Gude"})
 
         } catch (error) {
             return res.status(500).json({success:false,error:"email not sent"})
@@ -72,6 +72,9 @@ const userCtrl = {
     login: async (req, res) => {
         try {
             const {email, password} = req.body
+            if( !email || !password)
+            return res.status(400).json({success:false,error:"provide all fields"})
+
             const user = await Users.findOne({email})
             if(!user) return res.status(400).json({success:false,error: "This email does not exist."})
 

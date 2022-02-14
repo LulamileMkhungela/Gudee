@@ -5,6 +5,11 @@ const cors = require('cors');
 const path = require('path');
 
 
+
+//conversation
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
+
 const ProductAPI = require('./routes/ProductAPI');
 const authProduct= require('./routes/Products');
 const fileRoutes = require('./routes/file-upload-routes');
@@ -22,10 +27,18 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api', fileRoutes.routes);
 app.use('/api', sellerRoutes.routes);
-//app.use("/api/auth/",require("./routes/auth"));
+
+//chatconnection check
+
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
+
+
+app.use("/api/auth/",require("./routes/auth"));
 //app.use("/app/",require("./routes/routes"))
 //app.use("/api/",require("./routes/private"));
-//app.use('/user', require('./routes/userRouter'));
+
+app.use('/user', require('./routes/userRouter'));
 //app.use("/api/",authProduct);
 //app.use('/api/image', ProductAPI);
 

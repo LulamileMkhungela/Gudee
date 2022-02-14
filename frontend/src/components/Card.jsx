@@ -7,7 +7,7 @@ const Card = () => {//
         <div className="modalBackground">
             <div className="modalContainer">
                 <div className="titleClosedBtn">
-                    <Link to="/addprofiletwo"><button> x </button></Link>
+                    <Link to ="/addprofiletwo"><button> x </button></Link>
                 </div>
                 <div className="title">
                     <h1>Visa</h1>

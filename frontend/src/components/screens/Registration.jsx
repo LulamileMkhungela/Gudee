@@ -109,18 +109,18 @@ const Registration =({ history })=> {
                                   </div>
                                       <div className="col">
                                       <label> last name </label><br />
-                              <input type="text" className="form-control" name='lastname' value={lastname}
+                              <input type="text" className="form-control" name='lastname' required value={lastname}
                             onChange={(e) => setLastname(e.target.value)}/>
                           </div>
                          
                              </div>
 
                     <label>Email Address</label><br />
-                    <input type="type" name="email"  value={email}
+                    <input type="email" name="email" required value={email}
             onChange={(e) => setEmail(e.target.value)} /><br />
                     
                     <label> Password </label><br />
-                    <input  className="pass" type="password" name="password"  value={password}
+                    <input  className="pass" type="password" name="password" required value={password}
             onChange={(e) => setPassword(e.target.value)} /> 
             
 

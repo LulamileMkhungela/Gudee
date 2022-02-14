@@ -40,6 +40,8 @@ import Cash from './components/Cash';
 import PayPal from './components/PayPal';
 import Card from './components/Card'
 import Exchange from './components/Exchange'
+import Messenger from "./components/pages/Messenger";
+import ActivationEmail from './components/screens/ActivationEmail'
 
 //
 
@@ -79,7 +81,8 @@ const App=()=>{
       <Route path="/PayPal" component={PayPal}/>
       <Route path="/Card" component={Card}/>
       <Route path="/Exchange" component={Exchange}/>
-      {/* <Route path="/messages" component={<Messages/>}/>  */}
+      <Route path="/messages" component={Messenger}/> 
+      <Route path="/user/activate/:activation_token" component={ActivationEmail} exact />
     </BrowserRouter>
   </div>
   );
