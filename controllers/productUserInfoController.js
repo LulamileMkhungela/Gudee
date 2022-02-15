@@ -14,7 +14,7 @@ const ProductUserInfo = async (req, res, next) => {
             paymentMethod: req.body.paymentMethod,
         });
         await userInformation.save();
-        res.status(201).send('Your image has been uploaded successfully');
+        res.status(201).send('Your information has been uploaded successfully');
     } catch (error) {
         res.status(400).send(error.message);
     }

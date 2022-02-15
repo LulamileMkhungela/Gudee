@@ -13,6 +13,7 @@ const ProductAPI = require('./routes/ProductAPI');
 const authProduct = require('./routes/Products');
 const fileRoutes = require('./routes/file-upload-routes');
 const sellerRoutes = require('./routes/SellerRoutes');
+const profileRoutes = require('./routes/ProfileRoutes');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -26,6 +27,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api', fileRoutes.routes);
 app.use('/api', sellerRoutes.routes);
+app.use('/api', profileRoutes.routes)
 
 //chatconnection check
 
