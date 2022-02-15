@@ -31,7 +31,7 @@ const Login = ({history}) => {
 
         try {
             const {data} = await axios.post(
-                "/api/auth/login",
+                "http://localhost:5000/api/auth/login",
                 {email, password},
                 config
             );
