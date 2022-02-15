@@ -48,6 +48,7 @@
 }
 
 .sidebarListItem {
+    margin-left: 15px;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
