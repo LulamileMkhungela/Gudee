@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom'
+import axios from 'axios';
 import loginimg from '../../images/login_logo.jpeg';
 import icon from '../../images/icon.jpeg';
 import backImage from '../../images/back-image.png';
@@ -7,7 +7,19 @@ import mask from '../../images/Mask.png';
 import './addprofiletwo.css';
 
 const AddProfileTwo = () => {
-//
+    const [cellphone, setCellphone] = useState('');
+    const [altCellphone, setAltCellphone] = useState('');
+    const [homeAddress, setHomeAddress] = useState('')
+    const [radio, setRadio] = useState('cash');
+
+    const submitHandler = () => {
+        axios.post('/api/profile', {
+            cellphone: cellphone,
+            altCellphone: altCellphone,
+            homeAddress: homeAddress,
+            radio: radio,
+        })
+    }
 
     return (
         <div className="addprofile-com">
@@ -28,52 +40,56 @@ const AddProfileTwo = () => {
                     <div className="row">
                         <div className="col">
                             <label> phone number </label><br/>
-                            <input type="text" className="form-control" name="phonenumber"/><br/>
+                            <input type="text" className="form-control" name="phonenumber" onChange={(e) => setCellphone(e.target.value)}/><br/>
                         </div>
                         <div className="col">
                             <label> Alternative number </label><br/>
-                            <input type="text" className="form-control" name="altnumber"/>
+                            <input type="text" className="form-control" name="altnumber" onChange={(e) => setAltCellphone(e.target.value)}/>
                         </div>
                     </div>
                     <label>Location </label><br/>
-                    <div><input type="text" name="location"/><br/></div>
+                    <div><input type="text" name="location" onChange={(e) => setHomeAddress(e.target.value)}/><br/></div>
                     <label> Payment methods </label><br/>
                     <span className="buttons-reg-payment">
-                    <Link to="/cash"><input
+                    <input
                         type="radio"
                         className="payment"
                         value="cash"
                         name='payement'
                         checked="checked"
                         id='cash'
-                    /></Link>
+                        onChange={(e) => setRadio({radio: e.target.value})}
+                    />
                     <label for="cash" className="labelpayment">cash</label>
-                    <Link to="/PayPal"><input
+                    <input
                         type="radio"
                         className="payment"
                         value="paypal"
                         name='payement'
                         id='paypal'
-                    /></Link>
+                        onChange={(e) => setRadio({radio: e.target.value})}
+                    />
                     <label for="paypal" className="labelpayment">paypal</label>
-                    <Link to="/Card"><input
+                    <input
                         type="radio"
                         className="payment"
                         value="visa"
                         name='payement'
                         id='visa'
-                    /></Link>
+                        onChange={(e) => setRadio({radio: e.target.value})}
+                    />
                     <label for="visa" className="labelpayment">visa</label>
-                    <Link to="/Exchange"><input
+                    <input
                         type="radio"
                         className="payment"
                         value="exchange"
                         name='payement'
                         id='exchange'
-                    /></Link>
+                        onChange={(e) => setRadio({radio: e.target.value})}
+                    />
                     <label for="exchange" className="labelpayment">exchange/negotiate</label></span><br/>
 
-                    <button className="btn" type="submit" value="submit">Save & Continue</button>
+                    <button className="btn" type="submit" value="submit" onClick={submitHandler}>Save & Continue</button>
                 </form>
             </div>
         </div>
