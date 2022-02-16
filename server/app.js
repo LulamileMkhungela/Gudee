@@ -11,6 +11,18 @@ const authRoute = require('./routes/authenticate/authRoute')
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
+
+/*
+    Connect To Database Using Mongoose
+ */
+
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb+srv://Gudee:<password>@cluster0.tisxh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    {},err => {
+    
+})
+
 /*
     Execute Routes Middlewares
  */

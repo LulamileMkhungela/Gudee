@@ -4,6 +4,7 @@ import Registration from './components/screens/Registration';
 import ForgotPassword from './components/screens/ForgotPassword';
 import ResetPassword from './components/screens/ResetPassword';
 
+import './global.css';
 
 import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom';
 
@@ -38,6 +39,7 @@ import Card from './components/Card'
 import Exchange from './components/Exchange'
 import Messenger from "./components/pages/Messenger";
 import ActivationEmail from './components/screens/ActivationEmail'
+import NotFound from "./components/screens/notFound";
 
 //
 
@@ -79,6 +81,7 @@ const App = () => {
                 <Route path="/Exchange" component={Exchange}/>
                 <Route path="/messages" component={Messenger}/>
                 <Route path="/user/activate/:activation_token" component={ActivationEmail} exact/>
+                <Route component={NotFound}> </Route>
             </BrowserRouter>
         </div>
     );
