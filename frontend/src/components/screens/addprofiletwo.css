@@ -7,25 +7,28 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 70px;;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
 }
 
 .addprofile-com .login-img {
 
-    border: solid 0.1px lightgray;
-    height: 600px;
-    /* text-align: center; */
+    border: solid 0.1px rgb(255, 255, 255);
+    top: 0;
+    bottom: 0;
 
 }
 
-.addprofile-com .login-img img {
+/*.addprofile-com .login-img img {
 
-    height: 600px;
+    top: 0;
+    height: 90%;
     width: 100%;
-    /* vertical-align: middle; */
 
-}
+}*/
 
 
 .addprofile-com .addprofile-form {
@@ -37,7 +40,8 @@
 
 .addprofile-form {
     position: relative;
-    width: 100%;
+    padding-top: 10%;
+    margin-left: 0;
     height: 100%;
 
 
@@ -189,8 +193,7 @@ form-control {
 
 .buttons-reg-payment {
     display: flex;
-
-
+    
 }
 
 .payment {
@@ -202,7 +205,7 @@ form-control {
     justify-content: space-between;
     border-bottom-right-radius: 16px;
     border-top-right-radius: 16px;
-    margin-left: 5px;
+    margin-left: 1px;
     margin-bottom: 20px;
     border-color: lightgray;
     background-color: var(--white);

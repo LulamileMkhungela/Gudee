@@ -7,7 +7,7 @@ import searchbox from '../../images/Searchbox.png'
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import mask from '../../images/Mask.png';
-
+import logoBootstrap from '../../images/logo-bootstrap.png'
 
 export const Explore = () => {
     let history = useHistory();
@@ -46,21 +46,20 @@ export const Explore = () => {
 
 
         <div className="explore-com">
-
-
             <div className="side-nav">
-
+           
                 <nav className='sidebawrapper'>
+                
                     <ul className='sidebarList'>
-
-                        <li className='sidebarListItem'><NavLink to="/electronics" activeClassName="selectedLink"><i
-                            class="fa fa-tablet"></i>Electronics</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/outdoors" activeClassName="selectedLink"><i
-                            class="fa fa-tablet"></i>Outdoors</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/gaming" activeClassName="selectedLink"><i
-                            class="fa fa-tablet"></i>Gaming</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/Freebies" activeClassName="selectedLink"><i
-                            class="fa fa-tablet"></i>Freebies</NavLink></li>
+                        <img className="" src={logoBootstrap} alt="" />
+                        <li className='sidebarListItem'><NavLink to="/electronics" activeClassName="selectedLink">
+                        <i class="fa fa-tablet"></i>Electronics</NavLink></li>
+                        <li className='sidebarListItem'><NavLink to="/outdoors" activeClassName="selectedLink">
+                        <i class="fas fa-campground"></i>Outdoors</NavLink></li>
+                        <li className='sidebarListItem'><NavLink to="/gaming" activeClassName="selectedLink">
+                        <i class="fab fa-xbox"></i>Gaming</NavLink></li>
+                        <li className='sidebarListItem'><NavLink to="/Freebies" activeClassName="selectedLink">
+                        <i class="fab fa-freebsd"></i>Freebies</NavLink></li>
                         <li className='sidebarListItem'><NavLink to="/Stationery" activeClassName="selectedLink"><i
                             class="fa fa-book"></i>Stationery</NavLink></li>
 
@@ -68,11 +67,8 @@ export const Explore = () => {
                 </nav>
 
             </div>
-
             <div className="top-nav">
-
-                <input type="search" placeholder="    Search Items"/>
-
+                <input className="search-box" type="search" placeholder="Search Items"/>
                 <select>
                     <option>All Categories</option>
                     <option>Electronics</option>
@@ -80,19 +76,11 @@ export const Explore = () => {
                     <option>Gaming</option>
                     <option>Freebies</option>
                     <option>Stationary</option>
-
                 </select>
-
                 <SearchOutlinedIcon className="i-search"/>
-
-
                 {/* data? <redirect to="itemstosell" ></redirect> */}
-
-
                 <button type="button" onClick={userinfo}><i class="fa fa-send-o"></i> Sell On Gude</button>
-
                 <div className="right">
-
 
                     <ul>
                         <li><i className="fa fa-bell-o"></i></li>

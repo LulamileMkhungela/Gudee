@@ -44,7 +44,7 @@ const RegistrationSeller = ({history}) => {
                 },
                 config
             )
-            setSuccess(data.data.data);
+            setSuccess(data.data);
 
 
             //localStorage.setItem("authToken", data.token);

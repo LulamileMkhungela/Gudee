@@ -7,23 +7,29 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   
 
 }
 
 .login-com .login-img {
 
     border: solid 0.1px lightgray;
-    height: 600px;
-    /* text-align: center; */
+    top: 0;
+    left: 0;
+    bottom: 0;
 
 }
 
 .login-com .login-img img {
 
-    height: 600px;
-    width: 100%;
-    /* vertical-align: middle; */
+    border: solid 0.1px lightgray;
+    top: 0;
+    left: 0;
+    bottom: 0;
 
 }
 

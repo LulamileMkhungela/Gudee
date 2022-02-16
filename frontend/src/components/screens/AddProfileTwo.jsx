@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import loginimg from '../../images/login_logo.jpeg';
+import loginimg from '../../images/login_logo.jpg';
 import icon from '../../images/icon.jpeg';
 import backImage from '../../images/back-image.png';
 import mask from '../../images/Mask.png';
@@ -10,14 +10,18 @@ const AddProfileTwo = () => {
     const [cellphone, setCellphone] = useState('');
     const [altCellphone, setAltCellphone] = useState('');
     const [homeAddress, setHomeAddress] = useState('')
-    const [radio, setRadio] = useState('cash');
+    const [radio, setRadio] = useState({});
 
-    const submitHandler = () => {
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setRadio({[name]: value})
+    }
+
+    const submitHandler = (name, value) => {
         axios.post('/api/profile', {
             cellphone: cellphone,
             altCellphone: altCellphone,
             homeAddress: homeAddress,
-            radio: radio,
         })
     }
 
@@ -58,7 +62,8 @@ const AddProfileTwo = () => {
                         name='payement'
                         checked="checked"
                         id='cash'
-                        onChange={(e) => setRadio({radio: e.target.value})}
+                        checked={radio === "cash"}
+                        onChange={handleChange}
                     />
                     <label for="cash" className="labelpayment">cash</label>
                     <input
@@ -67,7 +72,8 @@ const AddProfileTwo = () => {
                         value="paypal"
                         name='payement'
                         id='paypal'
-                        onChange={(e) => setRadio({radio: e.target.value})}
+                        checked={radio === "paypal"}
+                        onChange={handleChange}
                     />
                     <label for="paypal" className="labelpayment">paypal</label>
                     <input
@@ -76,7 +82,8 @@ const AddProfileTwo = () => {
                         value="visa"
                         name='payement'
                         id='visa'
-                        onChange={(e) => setRadio({radio: e.target.value})}
+                        checked={radio === "visa"}
+                        onChange={handleChange}
                     />
                     <label for="visa" className="labelpayment">visa</label>
                     <input
@@ -85,7 +92,8 @@ const AddProfileTwo = () => {
                         value="exchange"
                         name='payement'
                         id='exchange'
-                        onChange={(e) => setRadio({radio: e.target.value})}
+                        checked={radio === "exchange"}
+                        onChange={handleChange}
                     />
                     <label for="exchange" className="labelpayment">exchange/negotiate</label></span><br/>
 

@@ -6,7 +6,7 @@
     box-shadow: 0px 3px 12px #00000029;
     width: 49%;
     background-color: #090d1a;
-    margin-left: 160px;
+    margin-left: 200px;
     margin-top: 65px;
     position: relative;
 
@@ -15,7 +15,7 @@
 
 .wrapper h1 {
     margin-top: 20px;
-    margin-left: 40px;
+    margin-left: 60px;
     color: rgb(151, 131, 131);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .deals {
-    margin-left: 160px;
+    margin-left: 200px;
     flex-wrap: wrap;
 
 
