@@ -66,43 +66,25 @@ const ProductCategory = () => {
         fetchData();
     }, []);
 
-
     return (
         <div>
-
-
             <div className="products">
                 {products.map((product, idx) => (
-
                     <div className="product">
-
                         <div>
-
                             <img src={product.image} alt="name"/>
                             <div className="details">{product.name}
-
                             </div>
                             <div>{product.description}</div>
-
                             <div className="price">{product.cost}
-
                             </div>
-
-
                             <button onClick={handleClick}><i className="fa fa-briefcase"></i> Add to card</button>
                             <span><button className="wish" onClick={handlewishClick}> <i className="fa fa-heart-o"></i>add to WhishList</button></span>
                         </div>
-
-
                     </div>
                 ))};
-
-
             </div>
-
-
         </div>
-
     )
 }
 export default ProductCategory;
