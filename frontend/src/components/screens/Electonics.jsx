@@ -5,6 +5,7 @@ import axios from 'axios'
 import leftArrow from '../../images/leftArrow.png';
 import './Electronics.css';
 
+// dummy data
 const images = [
     {name: 'Thabiso'},
     {name: 'Themba'},
@@ -20,6 +21,7 @@ function Electonics() {
     const [electronics, setElectronics] = useState([]);
 
     useEffect(() => {
+        // back end route
         axios.get('').then(res => {
             setElectronics(res.data);
         }).catch(err => {
@@ -30,7 +32,7 @@ function Electonics() {
   return (
       <>
         <div className="page">
-            <h1 className="products">Electronic products</h1>
+            <h1 className="products">Electronics</h1>
             <div className="button">
                 <Link to="/productlist"><img src={leftArrow} className="btn"/></Link>
             </div>  

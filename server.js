@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
-
 //conversation
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");

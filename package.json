@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "client": "cd frontend && npm start",
-    "addmore": "concurrently \"npm run service\" \"npm run client\"",
+    "gude": "concurrently \"npm run service\" \"npm run client\"",
     "start ": "node server.js",
     "service": "nodemon server.js",
     "data:import": " node seederScript.js"
