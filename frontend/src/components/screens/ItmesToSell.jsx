@@ -24,68 +24,127 @@ const secondData = [
     {name: 'New'},
 ]
 const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
-    const [selects, setSelects] = useState('');
-    const [singleFiles, setSingleFiles] = useState([]);
+    // const [url , setUrl]= useState(null)
+    // const [selects, setSelects] = useState('');
+    // const [singleFiles, setSingleFiles] = useState([]);
+    // const [cash,setCash] = useState(false);
+    // const [payPal,setPayPal] = useState(false);
+    // const [visa,setVisa] = useState(false);
+    // const [neg,setNeg] = useState(false);
+    // const [holdImg,setHoldImg] = useState(false);
+    // const getSingleFileslist = async () => {
+    //     try {
+    //         const fileslist = await getSingleFiles();
+    //         setSingleFiles(fileslist);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+    //
+    // useEffect(() => {
+    //     getSingleFileslist();
+    // }, []);
+
+    // Returned when the 'Books' field is chosen
+    // if (selects === 'Books') {
+    //     return <Books getsingle={() => getSingleFileslist()}/>
+    // }
+
+    const [ISBNinput,setISBN] = useState(false);
+    const [IMEIinput,setIMEI] = useState(false);
+
+    /*
+        Get Input Values Using useState() Hook
+     */
     const [preview,setPreview] = useState(null);
     const [showPreview,setShowPreview] = useState(false)
+    const [holdImg,setHoldImg] = useState(false);
     const [cash,setCash] = useState(false);
     const [payPal,setPayPal] = useState(false);
     const [visa,setVisa] = useState(false);
     const [neg,setNeg] = useState(false);
-    const [holdImg,setHoldImg] = useState(false);
-    const getSingleFileslist = async () => {
-        try {
-            const fileslist = await getSingleFiles();
-            setSingleFiles(fileslist);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const post = async (e) =>{
+        e.preventDefault()
+        await  axios({
+            url : 'http://localhost:5000/products/sell',
+            method : 'POST',
+            data : new FormData(document.querySelector('#sell-form'))
+        }).then(resp => {
 
-    useEffect(() => {
-        getSingleFileslist();
-    }, []);
-
-    // Returned when the 'Books' field is chosen
-    if (selects === 'Books') {
-        return <Books getsingle={() => getSingleFileslist()}/>
+        })
     }
     return (
         <div>
             <div className="panel-default item-to-sell">
                 <div className={'row'}>
                     <div className={'col-lg-6'}>
+                        {/*<h5>{user}</h5>*/}
                         <br />
                         <div className={'item-to-sell-heading'}>Item To Sell</div>
-                        <form>
-                            <select className={'form-control'} style={{height : '60px', borderRadius : '7px'}}>
+                        <form id={'sell-form'} encType={'multipart/form-data'}>
+                            <select
+                                name = {'category'}
+                                className={'form-control'}
+                                style={{height : '60px', borderRadius : '7px'}}
+                                onChange={(e) => {
+                                    if (e.target.value === 'phone'){
+                                        setIMEI(true)
+                                        setISBN(false)
+                                    }else if (e.target.value === 'book'){
+                                        setISBN(true)
+                                        setIMEI(false)
+                                    }else{
+                                        setISBN(false)
+                                        setIMEI(false)
+                                    }
+                                }}
+                            >
                                 <option>Select Category</option>
+                                <option value={'electronic'}>Electronics</option>
+                                <option value={'freebie'}>Freebies</option>
+                                <option value={'phone'}>Phones</option>
+                                <option value={'book'}>Books</option>
                             </select>
                             <br />
                             <input type={'file'}
                                    className={'form-control'}
                                    multiple={true}
+                                   name={'product_img_url'}
                                    onChange={e=>{
                                        setPreview(URL.createObjectURL(e.target.files[0]))
                                        setShowPreview(true);
                                        setHoldImg(true);
+                                       console.log(e.target.files)
+
                                    }}
                             />
                             {showPreview ? <div><br /><img src={preview} alt={''} className={'preview-img'}/><br /></div> : ''}
                             <br />
-                            <input type={'text'} className={'form-control'} placeholder={'Enter Item Title'}/>
+                            <input name={'title'} type={'text'} className={'form-control'} placeholder={'Enter Item Title'}/>
+                            {ISBNinput ? <div>
+                                <br />
+                                <input name={'isbn'} type={'text'} className={'form-control'} placeholder={'ISBN Number'}/>
+                            </div> : ''
+                            }
+                            {IMEIinput ? <div>
+                                <br />
+                                <input name={'imei'} type={'text'} className={'form-control'} placeholder={'IMEI Number'}/>
+                            </div> : ''
+                            }
                             <br />
-                            <textarea rows={4} className={'form-control'} placeholder={'Enter Item Description'} />
+                            <textarea  name={'desc'} rows={4} className={'form-control'} placeholder={'Enter Item Description'} />
                             <br />
-                            <select className={'form-control item-to-sell-category'} style={{height : '60px', borderRadius : '7px'}}>
+                            <select name={'condition'} className={'form-control item-to-sell-category'} style={{height : '60px', borderRadius : '7px'}}>
                                 <option>Select Condition</option>
+                                <option>New</option>
+                                <option>Used</option>
                             </select>
                             <br />
-                            <input type={'text'} className={'form-control'} placeholder={'Type Your Price'}/>
+                            <input name={'price'} type={'text'} className={'form-control'} placeholder={'Type Your Price'}/>
                             <br />
-                            <input type={'number'} className={'form-control'} placeholder={'Number Of Items'}/>
+                            <input name={'quantity'} type={'number'} className={'form-control'} placeholder={'Number Of Items'}/>
                             <br />
-                            <input type={'text'} className={'form-control'} placeholder={'Location'}/>
+                            <input name={'location'} type={'text'} className={'form-control'} placeholder={'Location'}/>
                             <br />
                             <label>Payment Methods</label>
                             <div className={'payment-method'}>
@@ -109,7 +168,7 @@ const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
                             <br />
                             <div className={'item-btn'}>
                                 <button className={'btn btn-default'}>Save As Draft</button>
-                                <button className={'btn btn-default'}>Post</button>
+                                <button onClick={e=>post(e)} className={'btn btn-default'}>Post</button>
                             </div>
 
                         </form>

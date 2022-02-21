@@ -12,8 +12,8 @@ export const ProductList = () => {
 
             <div className="wrapper">
                 <h1>GET THE NEW IPHONE12 PRO 12</h1>
-                <div><img className="iphone-img" src={iphone}/></div>
-                <button className="btn-buy"><i class="fa fa-shopping-cart"></i> Buy item</button>
+                <div><img className="iphone-img" src={iphone} alt={''}/></div>
+                <button className="btn-buy"><i className="fa fa-shopping-cart"> </i> Buy item</button>
 
                 <button className="btn-text"> Buy item</button>
             </div>
