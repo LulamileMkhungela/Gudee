@@ -4,7 +4,6 @@
     grid-template-columns: 1fr 9fr;
     background-color: var(--white);
     box-shadow: 0px 3px 12px #00000029;
-
 }
 
 .img-search {
@@ -17,33 +16,24 @@
 .side-nav {
     flex: 3;
     height: calc(300vh - 50px);
-
     position: sticky;
     top: 0px;
-
     border: none;
-
     box-shadow: 0px 0px 0px #00000029;
-
     color: #3c4358;
-
 }
 
 .sidebarList {
-
     padding: 0;
     margin: 0;
     list-style: none;
     background-color: #f6f8fd;
     margin-top: 60px;
     height: calc(100vh - 60px);
-
-
 }
 
 .sidebawrapper {
     padding: 1px;
-
 }
 
 .sidebarListItem {
@@ -70,21 +60,16 @@
     margin-right: 30px;
     left: 29px;
     list-style-type: none;
-
-
 }
 
 .side-nav .selectedLink {
     top: 60px;
     font-size: 20px;
     font-weight: bolder;
-
     left: 19px;
     list-style-type: none;
     background-color: #3c4358;
     background-color: #3c4358;
-
-
 }
 
 .top-nav {
@@ -94,11 +79,9 @@
     height: 60px;
     padding-left: 1px;
     box-shadow: 0px 3px 12px #55555529;
-
 }
 
 .top-nav input {
-
     width: 400px;
     height: 35px;
     border: lightgray solid 0.1px;
@@ -108,11 +91,9 @@
     box-shadow: 0px 3px 12px #00000029;
     outline: none;
     margin-left: 5px;
-
 }
 
 .top-nav select {
-
     width: 120px;
     height: 35px;
     border: lightgray;
@@ -122,7 +103,6 @@
     box-shadow: 0px 0px 5px #00000029;
     outline: none;
     border: none;
-
 }
 
 .i-search {
@@ -148,8 +128,6 @@
     margin-left: 230px;
     display: inline;
     font-display: 65px;
-
-
 }
 
 
@@ -166,14 +144,12 @@
     border-color: red;
     outline: none;
     box-shadow: 0px 3px 12px #00000029;
-
 }
 
 .top-nav .right ul {
 
     list-style-type: none;
     display: inline-block;
-
 }
 
 .top-nav .right ul li i {
@@ -187,20 +163,16 @@
 .top-nav .right ul li img {
     margin-right: 10px;
     margin-top: -5px;
-
     height: 30px;
     width: 30px;
     object-fit: cover;
     cursor: pointer;
-
-
     display: inline-block;
 }
 
 .toptick {
     height: 5px;
     width: 3px;
-
 }
 
 .right span {
@@ -208,12 +180,9 @@
     margin-top: 5px;
     position: absolute;
     z-index: 1;
-
-
     padding: 5px;
     width: 15px;
     height: 10px;
-
 }
 
 
@@ -227,7 +196,3 @@ a:hover {
     text-decoration: none;
 
 }
-
-
-/* --------- Dropdown ---------- */
-

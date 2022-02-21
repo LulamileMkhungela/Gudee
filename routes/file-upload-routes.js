@@ -16,7 +16,6 @@ router.post('/singleFile', upload.single('file'), singleFileUpload);
 router.post('/multiplefiles', upload.array('files'), multipleFileUpload);
 router.get('/getSingleFiles', getallSingleFiles);
 router.get('/getMultipleFiles', getallmultipleFiles);
-
 module.exports = {
     routes: router
 }

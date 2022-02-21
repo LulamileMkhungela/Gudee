@@ -23,10 +23,8 @@ export const ProductList = () => {
             </div>
             <div className="sub-product">
                 <h1 className="deals">Frequently bought Items</h1>
-                <Product/>
+                <Product />
             </div>
-
-
         </div>
     )
 }

@@ -7,7 +7,6 @@ import searchbox from '../../images/Searchbox.png'
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import mask from '../../images/Mask.png';
-import logoBootstrap from '../../images/logo-bootstrap.png'
 
 export const Explore = () => {
     let history = useHistory();
@@ -43,29 +42,22 @@ export const Explore = () => {
 
 
     return (
-
-
         <div className="explore-com">
             <div className="side-nav">
-           
                 <nav className='sidebawrapper'>
-                
                     <ul className='sidebarList'>
-                        <img className="" src={logoBootstrap} alt="" />
                         <li className='sidebarListItem'><NavLink to="/electronics" activeClassName="selectedLink">
-                        <i class="fa fa-tablet"></i>Electronics</NavLink></li>
+                            <i class="fa fa-tablet"></i>Electronics</NavLink></li>
                         <li className='sidebarListItem'><NavLink to="/outdoors" activeClassName="selectedLink">
-                        <i class="fas fa-campground"></i>Outdoors</NavLink></li>
+                            <i class="fas fa-campground"></i>Outdoors</NavLink></li>
                         <li className='sidebarListItem'><NavLink to="/gaming" activeClassName="selectedLink">
-                        <i class="fab fa-xbox"></i>Gaming</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/Freebies" activeClassName="selectedLink">
-                        <i class="fab fa-freebsd"></i>Freebies</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/Stationery" activeClassName="selectedLink"><i
-                            class="fa fa-book"></i>Stationery</NavLink></li>
-
+                            <i class="fab fa-xbox"></i>Gaming</NavLink></li>
+                        <li className='sidebarListItem'><NavLink to="/freebies" activeClassName="selectedLink">
+                            <i class="fab fa-freebsd"></i>Freebies</NavLink></li>
+                        <li className='sidebarListItem'><NavLink to="/stationery" activeClassName="selectedLink">
+                            <i class="fa fa-book"></i>Stationery</NavLink></li>
                     </ul>
                 </nav>
-
             </div>
             <div className="top-nav">
                 <input className="search-box" type="search" placeholder="Search Items"/>

@@ -40,6 +40,11 @@ import Exchange from './components/Exchange'
 import Messenger from "./components/pages/Messenger";
 import ActivationEmail from './components/screens/ActivationEmail'
 import NotFound from "./components/screens/notFound";
+import Electronics from './components/screens/Electonics';
+import Freebies from './components/screens/Freebies';
+import Gaming from './components/screens/Gaming';
+import Stationery from './components/screens/Stationery';
+import Outdoors from './components/screens/Outdoors';
 
 //
 
@@ -63,7 +68,6 @@ const App = () => {
                 <Route axact path="/registerseller" component={Registrationseller}/>
                 <Route axact path="/forgot" component={Forgot}/>
                 <Route axact path="/reset:resetoken" component={Reset}/>
-
                 <Route axact path="/register" component={RegisterScreen}/>
                 <Route path="/cart" component={AddedtoCard}/>
                 <Route path="/addprofiletwo" component={AddProfileTwo}/>
@@ -74,11 +78,12 @@ const App = () => {
                 <Route path="/profile" component={Profile}/>
                 <Route path="/productlist" component={ProductList}/>
                 <Route path="/additemstosell" component={ItmesToSell}/>
-                <Route path="/cash" component={Cash}/>
                 <Route path="/about" component={About}/>
-                <Route path="/PayPal" component={PayPal}/>
-                <Route path="/Card" component={Card}/>
-                <Route path="/Exchange" component={Exchange}/>
+                <Route path="/electronics" component={Electronics}/>
+                <Route path="/freebies" component={Freebies}/>
+                <Route path="/gaming" component={Gaming}/>
+                <Route path="/stationery" component={Stationery}/>
+                <Route path="/outdoors" component={Outdoors}/>
                 <Route path="/messages" component={Messenger}/>
                 <Route path="/user/activate/:activation_token" component={ActivationEmail} exact/>
                 <Route component={NotFound}> </Route>

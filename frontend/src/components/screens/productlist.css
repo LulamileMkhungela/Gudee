@@ -19,6 +19,10 @@
     color: rgb(151, 131, 131);
 }
 
+.category {
+    margin-left: 40px;
+}
+
 .iphone-img {
     width: 340px;
     height: 212px;
@@ -62,7 +66,7 @@
     color: white;
     position: absolute;
 
-    box-shadow: 0px 3px 12px #413f3f29;
+    box-shadow: 12px 3px 12px #413f3f29;
 
 }
 
@@ -82,11 +86,11 @@
 .caterogy {
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
-    margin-left: 2000px;
+    margin-left: 200px;
 }
 
 .sub-product {
+    margin: 40px;
     top: 0%;
     left: 0%;
     right: 0;
@@ -96,4 +100,8 @@
     position: relative;
     flex: 1;
     flex-direction: wrap;
+}
+
+.category-2 {
+    margin-left: 40px;
 }
