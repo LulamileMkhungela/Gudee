@@ -34,7 +34,7 @@ function Gaming() {
       <div className="page">
         <h1 className="products">Gaming</h1>
           <div className="button">
-            <Link to="/productlist"><img src={leftArrow} className="btn"/></Link>
+            <Link to="/store"><img src={leftArrow} className="btn"/></Link>
           </div>    
       </div>
       <div>

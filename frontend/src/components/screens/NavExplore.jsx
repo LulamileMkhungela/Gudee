@@ -1,11 +1,12 @@
+import React, {useState} from 'react';
 import {Link, NavLink, Redirect, useHistory} from 'react-router-dom';
-import './explore.css'
 import axios from 'axios';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import rectangkle from '../../images/Rectangle.png'
-import searchbox from '../../images/Searchbox.png'
-import {useState} from 'react';
 import {useSelector} from 'react-redux';
+
+import './explore.css';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import rectangkle from '../../images/Rectangle.png';
+import searchbox from '../../images/Searchbox.png';
 import mask from '../../images/Mask.png';
 
 export const Explore = () => {
@@ -13,9 +14,7 @@ export const Explore = () => {
     const [getData, setGetData] = useState({})
 
     const userinfo = async () => {
-
         await axios.post("/api/auth/login").then((res) => {
-
             const data = res.data;
             // console.log(data);
             if (!data) {
@@ -23,13 +22,10 @@ export const Explore = () => {
             } else {
                 history.push("/itemstosell")
             }
-
         })
             .catch(err => {
                 console.log(err)
             })
-
-
     }
 
     const quantity = useSelector(state => state.cart.quantity)
@@ -46,15 +42,15 @@ export const Explore = () => {
             <div className="side-nav">
                 <nav className='sidebawrapper'>
                     <ul className='sidebarList'>
-                        <li className='sidebarListItem'><NavLink to="/electronics" activeClassName="selectedLink">
+                        <li className='sidebarListItem'><NavLink to="/store-electronics" activeClassName="selectedLink">
                             <i class="fa fa-tablet"></i>Electronics</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/outdoors" activeClassName="selectedLink">
+                        <li className='sidebarListItem'><NavLink to="/store-outdoors" activeClassName="selectedLink">
                             <i class="fas fa-campground"></i>Outdoors</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/gaming" activeClassName="selectedLink">
+                        <li className='sidebarListItem'><NavLink to="/store-gaming" activeClassName="selectedLink">
                             <i class="fab fa-xbox"></i>Gaming</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/freebies" activeClassName="selectedLink">
+                        <li className='sidebarListItem'><NavLink to="/store-freebies" activeClassName="selectedLink">
                             <i class="fab fa-freebsd"></i>Freebies</NavLink></li>
-                        <li className='sidebarListItem'><NavLink to="/stationery" activeClassName="selectedLink">
+                        <li className='sidebarListItem'><NavLink to="/store-stationery" activeClassName="selectedLink">
                             <i class="fa fa-book"></i>Stationery</NavLink></li>
                     </ul>
                 </nav>
@@ -73,14 +69,12 @@ export const Explore = () => {
                 {/* data? <redirect to="itemstosell" ></redirect> */}
                 <button type="button" onClick={userinfo}><i class="fa fa-send-o"></i> Sell On Gude</button>
                 <div className="right">
-
                     <ul>
                         <li><i className="fa fa-bell-o"></i></li>
                     </ul>
                     <ul>
                         <li><i className='fab fa-facebook-messenger'></i></li>
                     </ul>
-
                     <Link to="/messages">
                         <ul>
                             <li><i class="fa fa-heart-o"></i></li>
@@ -89,13 +83,10 @@ export const Explore = () => {
                       {wishquantity}
                     </span>
                     </Link>
-
                     <Link to="/cart">
                         <ul>
                             <li><i class="fa fa-shopping-cart"></i></li>
                         </ul>
-
-
                         <span>
                       {quantity}
                     </span>
@@ -110,14 +101,9 @@ export const Explore = () => {
                         <li><Link to="/" onClick={logoutHandler}>Logout</Link></li>
                     </ul>
                 </div>
-
-
             </div>
-
         </div>
-
-
     );
-
 }
+
 export default Explore;

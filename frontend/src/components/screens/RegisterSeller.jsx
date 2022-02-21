@@ -3,7 +3,7 @@ import {useRef} from "react";
 import {Link, Redirect} from 'react-router-dom'
 import loginimg from '../../images/photoun.jpg';
 import navlogo from '../../images/nav-logo.png';
-import './reg.css';
+//import './reg.css';
 import axios from 'axios'
 
 import {showErrMsg, showSuccessMsg} from '../utils/notification/Notification';
