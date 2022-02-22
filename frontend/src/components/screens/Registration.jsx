@@ -3,8 +3,8 @@ import {useRef} from "react";
 import {Link, Redirect} from 'react-router-dom'
 import loginimg from '../../images/photoun.jpg';
 import navlogo from '../../images/nav-logo.png';
-//import './reg.css';
 import axios from 'axios'
+import './Registration.css'
 
 import {useContext} from 'react';
 
@@ -66,61 +66,64 @@ const Registration = ({history}) => {
 
 
     return (
-        <div className="login-com">
-
-            <div className="login-img">
-
+        <>
+            <div className="image-col">
                 <img src={loginimg} alt="Welcome To Gude"/>
-
             </div>
-
-
-            <div className="login-form">
-
+            <div className="form-col">
                 {error && <span className="error">{error}</span>}
                 <form onSubmit={registerHandler}>
-
                     <img src={navlogo} alt="Welcome Gude"/>
-
                     <h2>Join Gude Marketplace</h2>
-
                     <p>Already have an account? <i><Link to="/login">Login</Link></i></p> <br/>
-
-                    <button type="button" onClick={facebook}><i className="fa fa-facebook"></i> Login With Facebook
-                    </button>
+                    <button
+                        className="facebook-btn" 
+                        type="button" 
+                        onClick={facebook}
+                    ><i className="fa fa-facebook"></i>Register with Facebook</button>
                     <br/><br/>
-                    <div className="row">
-                        <div className="col">
-                            <label> first name </label><br/>
-                            <input type="text" className="form-control" name='firstname' required
-                                   value={firstname}
-                                   onChange={(e) => setFirstname(e.target.value)}/>
-                        </div>
-                        <div className="col">
-                            <label> last name </label><br/>
-                            <input type="text" className="form-control" name='lastname' required value={lastname}
-                                   onChange={(e) => setLastname(e.target.value)}/>
-                        </div>
-
+                    <div className="input-spacing">
+                        <input 
+                            type="text" 
+                            className="input-design" 
+                            name='firstname' required
+                            placeholder="Enter your first name"
+                            value={firstname}
+                            onChange={(e) => setFirstname(e.target.value)}
+                        />
+                        <input 
+                            type="text" 
+                            className="input-design" 
+                            name='lastname' 
+                            placeholder="Enter your last name"
+                            required value={lastname}
+                            onChange={(e) => setLastname(e.target.value)}
+                        />
                     </div>
-
-                    <label>Email Address</label><br/>
-                    <input type="email" name="email" required value={email}
-                           onChange={(e) => setEmail(e.target.value)}/><br/>
-
-                    <label> Password </label><br/>
-                    <input className="pass" type="password" name="password" required value={password}
-                           onChange={(e) => setPassword(e.target.value)}/>
-
-
-                    <button className="btn" type="submit" value="submit">Register</button>
-
-
+                    <br/>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        required 
+                        value={email}
+                        placeholder="Enter your Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <br/>
+                    <br/>
+                    <input  
+                        type="password" 
+                        name="password" 
+                        required 
+                        value={password}
+                        placeholder="Enter your password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br/><br/>
+                    <button className="login-btn" type="submit" value="submit">Register</button>
                 </form>
-
             </div>
-
-        </div>
+        </>
     )
 
 }
