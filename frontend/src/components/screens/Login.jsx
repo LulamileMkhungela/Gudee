@@ -43,7 +43,7 @@ const Login = ({history}) => {
             setError(error.response.data.error);
             setTimeout(() => {
                 setError("");
-            }, 5000);s
+            }, 5000);
         }
     };
 
@@ -53,31 +53,45 @@ const Login = ({history}) => {
     };
 
     return (
-        <div class="column">
-            <div className="">
+        <>
+            <div className="image-col">
                 <img src={loginimg} alt="Welcome To Gude"/>
             </div>
-            <div className="column">
+            <div className="form-col">
                 {error && <span className="error">{error}</span>}
                 <form onSubmit={loginHandler}>
                     <img src={navlogo} alt="Welcome Gude"/>
-                    <h2>Welcome Back Gude Marketplace</h2>
-                    <p>Don't have an account? <i><Link className='link' to="/register">Register</Link></i></p> <br/>
-                    <button type="button" onClick={facebook}><i className="fa fa-facebook"></i> Login With Facebook
+                    <h2>Welcome Back to Gude Marketplace</h2>
+                    <p>Don't have an account?<i><Link className='link' to="/register"> Register</Link></i></p> 
+                    <br/>
+                    <button 
+                        className="facebook-btn" 
+                        type="button" 
+                        onClick={facebook}
+                        ><i className="fa fa-facebook"></i>Login With Facebook
                     </button>
                     <br/><br/>
                     <label>Email Address</label><br/>
-                    <input type="email" name="email" onChange={(e) => setEmail(e.target.value)}
-                           value={email}/><br/><br/>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                    /><br/><br/>
                     <label> Passoword </label><br/>
-                    <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}
-                           value={password}/>
-
-                    <span><Link className='link' to="/forgotpassword">Forgot Password?</Link></span><br/><br/>
-                    <button className="btn" type="submit" value="submit">Login</button>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
+                    <br />
+                    <br />
+                    <span><Link className="form-link" to="/forgotpassword">Forgot Password?</Link></span><br/><br/>
+                    <button className="login-btn" type="submit" value="submit">Login</button>
                 </form>
             </div>
-        </div>
+        </>
     )
 }
 
