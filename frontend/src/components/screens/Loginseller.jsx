@@ -60,51 +60,50 @@ const Loginseller = ({history}) => {
         }
     };
 
+    const facebook = () => {
+        window.open("http://localhost:5000/auth/facebook", "_self");
+    };
 
     return (
-        <div className="login-com">
-
-            <div className="login-img">
-
+         <>
+            <div className="image-col">
                 <img src={loginimg} alt="Welcome To Gude"/>
-
             </div>
-
-
-            <div className="login-form">
-
+            <div className="form-col">
                 {error && <span className="error">{error}</span>}
                 <form onSubmit={registerHandler}>
-
                     <img src={navlogo} alt="Welcome Gude"/>
-
-                    <h2>Join Gude Marketplace</h2>
-
-                    <p>Dont have an account? <i><Link to="/registerSeller">Register</Link></i></p> <br/>
-
-
-                    <div className="row">
-
-
-                    </div>
-
+                    <h2>Welcome Back to Gude Marketplace</h2>
+                    <p>Don't have an account?<i><Link className='link' to="/registerseller"> Register</Link></i></p> 
+                    <br/>
+                    <button 
+                        className="facebook-btn" 
+                        type="button" 
+                        onClick={facebook}
+                        ><i className="fa fa-facebook"></i>Login With Facebook
+                    </button>
+                    <br/><br/>
                     <label>Email Address</label><br/>
-                    <input type="type" name="email" value={email}
-                           onChange={(e) => setEmail(e.target.value)}/><br/>
-
-                    <label> Password </label><br/>
-                    <input className="pass" type="password" name="password" value={password}
-                           onChange={(e) => setPassword(e.target.value)}/>
-
-                    <span><Link className='link' to="/forgot">Forgot Password?</Link></span><br/><br/>
-                    <button className="btn" type="submit" value="submit">Login</button>
-
-
+                    <input 
+                        type="email" 
+                        name="email" 
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                    /><br/><br/>
+                    <label> Passoword </label><br/>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
+                    <br />
+                    <br />
+                    <span><Link className="form-link" to="/forgotpassword">Forgot Password?</Link></span><br/><br/>
+                    <button className="login-btn" type="submit" value="submit">Login</button>
                 </form>
-
             </div>
-
-        </div>
+        </>
     )
 
 }
