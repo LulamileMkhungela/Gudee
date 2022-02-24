@@ -38,10 +38,10 @@ const userSchema = new mongoose.Schema({
 
     avatar: {
         type: String,
-        default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
+        default: null
     }
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model("students", userSchema)
+module.exports = mongoose.model("student", userSchema)

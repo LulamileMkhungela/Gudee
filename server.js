@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 //conversation
 const conversationRoute = require("./routes/conversations");
@@ -18,11 +20,15 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 require('./config/db')();
-dotenv.config();
+require('dotenv').config();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cookieParser());
+app.use(fileUpload({
+  useTemplate: true
+}));
 
 app.use('/api', fileRoutes.routes);
 app.use('/api', sellerRoutes.routes);
