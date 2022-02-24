@@ -78,7 +78,8 @@ const Registration = ({history}) => {
                     <p>Already have an account? <i><Link to="/login">Login</Link></i></p> <br/>
                     <button 
                         className="facebook-btn" 
-                        type="button" onClick={facebook}
+                        type="button" 
+                        onClick={facebook}
                     ><i className="fa fa-facebook"></i>
                     Register with facebook</button>
                     <br/><br/>
