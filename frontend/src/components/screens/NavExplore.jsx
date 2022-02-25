@@ -4,14 +4,13 @@ import axios from 'axios';
 import {useSelector} from 'react-redux';
 
 import './explore.css';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import rectangkle from '../../images/Rectangle.png';
-import searchbox from '../../images/Searchbox.png';
+import searchPng from '../../images/search-3-16.png';
 import mask from '../../images/Mask.png';
 
 export const Explore = () => {
     let history = useHistory();
-    const [getData, setGetData] = useState({})
+    const [getData, setGetData] = useState({});
+    const [] = useState();
 
     const userinfo = async () => {
         await axios.post("/api/auth/login").then((res) => {
@@ -65,9 +64,8 @@ export const Explore = () => {
                     <option>Freebies</option>
                     <option>Stationary</option>
                 </select>
-                <SearchOutlinedIcon className="i-search"/>
-                {/* data? <redirect to="itemstosell" ></redirect> */}
-                <button type="button" onClick={userinfo}><i class="fa fa-send-o"></i> Sell On Gude</button>
+                <button className="search-btn"><img src={searchPng} alt="search image"/></button>
+                <button type="button" className="gude-btn" onClick={userinfo}><i class="fa fa-send-o"></i> Sell On Gude</button>
                 <div className="right">
                     <ul>
                         <li><i className="fa fa-bell-o"></i></li>

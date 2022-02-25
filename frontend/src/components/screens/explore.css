@@ -131,7 +131,7 @@
 }
 
 
-.top-nav button {
+.top-nav .gude-btn {
     color: white;
     position: relative;
     left: 190px;
@@ -200,4 +200,14 @@ a:hover {
 .dropdown {
     font-weight: bolder;
     align-items: center;
+}
+
+.search-btn {
+    margin-top: 0px;
+    margin-left: 5px;
+    border-radius: 0 20px 0 20px;
+    background-color: rgb(0, 0, 0);
+    height: 38px;
+    width: 40px;
+    box-shadow: 0px 3px 12px #00000029;
 }
