@@ -51,8 +51,3 @@ app.use('/user', require('./routes/userRouter'));
 app.listen(PORT, () => {
     console.log(`server is up and running on port ${PORT}`);
 });
-
-/*process.on("unhandledRejection",(err,promise)=>{
-  console.log(`Logged Error:${err}`);
-  app.close(()=>process.exit(1));
-});*/
