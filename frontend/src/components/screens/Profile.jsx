@@ -1,9 +1,16 @@
+import React, {useState} from "react";
+
 import "./profile.css";
 import backImage from '../../images/back-image.png';
 import mask from '../../images/Mask.png';
 import Explore from "./NavExplore";
-import {useState} from "react";
 
+// screens
+import AboutScreen from '../pages/AboutScreen';
+import DraftScreen from '../pages/DraftScreen';
+import SoldItemsScreen from '../pages/SoldItemsScreen';
+import ListingsScreen from '../pages/ListingsScreen';
+import OptionScreen from '../pages/OptionScreen';
 
 export default function Profile() {
     const [togglestate, SetTogglestate] = useState(1);
@@ -12,83 +19,65 @@ export default function Profile() {
         SetTogglestate(index)
     }
 
+    const editHandler = () => {
+        <div className="pen-icon">
+            <button>Edit</button>
+        </div>
+    }
 
     return (
         <>
             <Explore/>
+            {/* cover image, profile picture and name will be changed when connecting to the database */}
             <img src={backImage} alt="Welcome Gude" className="profileback"/>
             <div className="image-size"><img src={mask} alt="Cinque Terre"/></div>
+            <div><h1 className="profile-name">Thabiso Hlatshwayo</h1></div>
+            <center>
+                <hr className="line" />
+            </center>
             <div className="profile-info">
                 <div>
                     <div
                         className={togglestate === 1 ? "tab-active" : "tabs"}
                         onClick={() => toggleTab(1)}>
-                        About
+                        Your listings
                     </div>
-                    <div className={togglestate === 2 ? "tab-active" : "tabs"}
-                         onClick={() => toggleTab(2)}>
-                        listing
+                    <div
+                        className={togglestate === 2 ? "tab-active" : "tabs"}
+                        onClick={() => toggleTab(2)}>
+                        Drafts
                     </div>
                     <div className={togglestate === 3 ? "tab-active" : "tabs"}
                          onClick={() => toggleTab(3)}>
-                        messages
+                        About
                     </div>
                     <div className={togglestate === 4 ? "tab-active" : "tabs"}
                          onClick={() => toggleTab(4)}>
-                        sold items
+                        Sold items
                     </div>
-
+                    <div className={togglestate === 5 ? "tab-active" : "tabs"}
+                         onClick={() => toggleTab(5)}>
+                        Options
+                    </div>
                 </div>
                 <div>
-
-                    <div
-                        className={togglestate === 1 ? "content  active-content" : "content"}
-                    >
-
-
-                        <h2> intro</h2>
-                        <p>
-                            <i class="fas fa-briefcase"></i>
-
-                            <i class="fa fa-map-marker"></i>
-                            <i class="fa fa-home"></i>
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-
-
-                        </p>
+                    <div className={togglestate === 1 ? "content  active-content" : "content"}>
+                        <ListingsScreen />
                     </div>
-                    <div
-                        className={togglestate === 2 ? "content  active-content" : "content"}
-                    >
-
-
-                        <p>
-                            listing
-                        </p>
+                    <div className={togglestate === 2 ? "content  active-content" : "content"}>
+                        <DraftScreen />
                     </div>
-                    <div
-                        className={togglestate === 3 ? "content  active-content" : "content"}
-                    >
-
-
-                        <p>
-                            Messages
-                        </p>
+                    <div className={togglestate === 3 ? "content  active-content" : "content"}>
+                        <AboutScreen />
                     </div>
-                    <div
-                        className={togglestate === 4 ? "content  active-content" : "content"}
-                    >
-                        <h2>Sold items</h2>
-
-                        <p>
-                            items sold
-                        </p>
+                    <div className={togglestate === 4 ? "content  active-content" : "content"}>
+                        <SoldItemsScreen />
                     </div>
-
+                    <div className={togglestate === 5 ? "content  active-content" : "content"}>
+                        <OptionScreen />
+                    </div>
                 </div>
-
             </div>
-
         </>
     );
 }

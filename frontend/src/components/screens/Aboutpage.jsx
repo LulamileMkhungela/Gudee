@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./profile.css";
 import Explore from "./NavExplore";
 

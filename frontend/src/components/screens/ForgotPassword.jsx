@@ -42,26 +42,25 @@ const ForgotPassword = ({histrory}) => {
 
 
     return (
-
         <div className="forgot-com">
-
-
             <div className="forgot-form">
                 {error && <span className="error">{error}</span>}
                 {success && <span className="success">{success}</span>}
                 <form onSubmit={forgotPasswordHandler}>
                     <div className="wraps">
                         <img className="img-fpass" src={navlogo} alt="Welcome Gude"/>
-
                         <h3>Recover Account</h3>
                     </div>
                     <div className="containers">
                         <label>Email Address Recover</label><br/>
-                        <input type="email" name="email" placeholder="Email address"
-                               value={email}
-                               onChange={(e) => setEmail(e.target.value)}/><br/>
-
-
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Email address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <br/>
                         <button className="btn" type="submit">Send Email</button>
 
                     </div>
