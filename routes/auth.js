@@ -1,69 +1,90 @@
 const router = require("express").Router();
 
-const User = require('../models/User');
-const crypto = require('crypto');
+const Users = require('../models/User');
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
 
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../controllers/sendMail');
 
-const {Error} = require('mongoose');
+
 // Register
 router.post("/register", async (req, res, next) => {
 
+        try {
+            const {firstname, lastname, email, password} = req.body
 
-    const signedUpUser = await new User({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        password: req.body.password
-    })
+            if (!firstname || !lastname || !email || !password)
+                return res.status(400).json({success: false, error: "provide all fields"})
 
-    try {
+            if (!validateEmail(email))
+                return res.status(400).json({success: false, error: "provide vaild email"})
 
-        await signedUpUser.save();
+            const user = await Users.findOne({email})
+            if (user) return res.status(400).json({success: false, error: "This email already exists."})
+
+            if (password.length < 6)
+                return res.status(400).json({success: false, error: "Password must be at least 6 characters."})
+
+            const passwordHash = await bcrypt.hash(password, 12)
+
+          
+                const newUser = new Users({
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    email: req.body.email,
+                    password: passwordHash,
+                  });
+            
+
+            // const activation_token = createActivationToken(newUser)
+
+            // const url = `${CLIENT_URL}/user/activate/${activation_token}`
+            // sendMail(email, url, "Verify your email address")
 
 
-        sendToken(signedUpUser, 200, res);
+            const users = await newUser.save();
 
+            res.json({success: true, users: "Register Success! you can noe login"})
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                error: error.message
+            })
+        }
 
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: error.message
-        });
-
-    }
+   
 });
 //Login
 router.post("/login", async (req, res, next) => {
+try {
+            const {email, password} = req.body
+            if (!email || !password)
+                return res.status(400).json({success: false, error: "provide all fields"})
 
-    const {email, password} = req.body;
-    if (!email || !password) {
-        res.status(400).json({success: false, error: "Please provide email and password"})
-    }
-    try {
-        const user = await User.findOne({email}).select("+password");
+            const user = await Users.findOne({email})
+            if (!user) return res.status(400).json({success: false, error: "This email does not exist."})
 
-        if (!user) {
-            res.status(404).json({success: false, error: "invalid credintials"})
+            const isMatch = await bcrypt.compare(password, user.password)
+            if (!isMatch) return res.status(400).json({success: false, error: "Password is incorrect."})
 
+            const refresh_token = createRefreshToken({id: user._id})
+            res.cookie('refreshtoken', refresh_token, {
+                httpOnly: true,
+                path: '/user/refresh_token',
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+            })
 
+            res.json({success: true, users: "Login success!"})
+        } catch (error) {
+            console.log(error);
+            // return res.status(500).json({success: false, error: error})
         }
-        const isMatched = await user.matchPasswords(password)
-
-        if (!isMatched) {
-            res.status(404).json({success: false, error: "invalid credintials"})
 
 
-        }
-        sendToken(user, 201, res);
 
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: error.message
-        });
-    }
+
+    
 
 });
 //Forgot password
@@ -150,7 +171,7 @@ router.post("/update", async (req, res, next) => {
     try {
 
 
-        await User.findOneAndUpdate({_id: req.params.id});
+        await Users.findOneAndUpdate({_id: req.params.id});
         avater
         res.json({success: true, data: "update  success"});
 
@@ -170,6 +191,17 @@ router.post("/update", async (req, res, next) => {
     }
 });
 
+const createAccessToken = (payload) => {
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'})
+}
+
+const createRefreshToken = (payload) => {
+    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
+}
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 // const{register,login,forgotpassword,resetpassword,update}= require('../controllers/auth')
 
