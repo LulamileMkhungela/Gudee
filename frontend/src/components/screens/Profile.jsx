@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import {Link} from 'react-router-dom';
 
 import "./profile.css";
 import backImage from '../../images/back-image.png';
 import mask from '../../images/Mask.png';
 import Explore from "./NavExplore";
+import leftArrow from '../../images/leftArrow.png';
 
 // screens
 import AboutScreen from '../pages/AboutScreen';
@@ -28,7 +30,7 @@ export default function Profile() {
     return (
         <>
             <Explore/>
-            {/* cover image, profile picture and name will be changed when connecting to the database */}
+            {/* cover image, profile picture and name will be changed when connecting to the back-end */}
             <img src={backImage} alt="Welcome Gude" className="profileback"/>
             <div className="image-size"><img src={mask} alt="Cinque Terre"/></div>
             <div><h1 className="profile-name">Thabiso Hlatshwayo</h1></div>
