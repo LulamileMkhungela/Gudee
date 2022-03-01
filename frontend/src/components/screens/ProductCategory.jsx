@@ -23,7 +23,6 @@ const ProductCategory = () => {
             cost: 'R200.99',
             description: 'dell i5 model with good results',
             image: {capture2}
-
         },
         {
             id: "2",
@@ -31,7 +30,6 @@ const ProductCategory = () => {
             cost: 'R1900.99',
             description: 'second hand cellphone',
             image: {captur1}
-
         },
         {
             id: "3",
@@ -39,7 +37,6 @@ const ProductCategory = () => {
             cost: 'R1900.99',
             description: 'second hand cellphone',
             image: {captur1}
-
         }
     ]);
 
@@ -49,19 +46,18 @@ const ProductCategory = () => {
             addProduct({...product, quantity})
         );
     };
+
     const handlewishClick = () => {
         dispatch(
             addwishlist({...product, wishquantity})
         );
     };
 
-
     useEffect(() => {
         const fetchData = async () => {
             const {data} = await axios.get(' http://localhost:5000/api/products');
             setProducts(data);
             console.log(data);
-
         };
         fetchData();
     }, []);
