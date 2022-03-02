@@ -1,21 +1,14 @@
-import React from 'react';
-import {useRef} from "react";
+import React, { useRef, useState, useEffect } from 'react';
 import {Link, Redirect} from 'react-router-dom'
-import loginimg from '../../images/photoun.jpg';
-import navlogo from '../../images/nav-logo.png';
-import './Registration.css'
+import {useHistory} from "react-router";
 import axios from 'axios'
 
+import './Registration.css';
+import students from '../../images/students.png';
+import navlogo from '../../images/nav-logo.png';
 import {showErrMsg, showSuccessMsg} from '../utils/notification/Notification';
 
-
-import {useState, useEffect} from 'react'
-
-
-import {useHistory} from "react-router";
-
 const RegistrationSeller = ({history}) => {
-
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
@@ -66,7 +59,7 @@ const RegistrationSeller = ({history}) => {
     return (
         <>
             <div className="image-col">
-                <img src={loginimg} alt="Welcome To Gude"/>
+                <img src={students} alt="Welcome To Gude"/>
             </div>
             <div className="form-col">
                 {error && <span className="error">{error}</span>}
@@ -81,28 +74,34 @@ const RegistrationSeller = ({history}) => {
                     Register with facebook</button>
                     <br/><br/>
                     <div className="input-spacing">
-                        <input 
-                            className="input-design"
-                            type="text" 
-                            name='firstname' 
-                            required
-                            placeholder="Enter your first name"
-                            value={firstname}
-                            onChange={(e) => setFirstname(e.target.value)}
-                        />
+                        <div>
+                            <label>First Name</label><br/>
+                            <input 
+                                className="input-design"
+                                type="text" 
+                                name='firstname' 
+                                required
+                                placeholder="Enter your first name"
+                                value={firstname}
+                                onChange={(e) => setFirstname(e.target.value)}
+                            />
+                        </div>
                         <br />
-                        <br />
-                        <input 
-                            className="input-design"
-                            type="text" 
-                            name='lastname' 
-                            required
-                            placeholder="Enter your last name"
-                            value={lastname}
-                            onChange={(e) => setLastname(e.target.value)}
-                        />
+                        <div>
+                            <label>Last Name</label><br/>
+                            <input 
+                                className="input-design"
+                                type="text" 
+                                name='lastname' 
+                                required
+                                placeholder="Enter your last name"
+                                value={lastname}
+                                onChange={(e) => setLastname(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <br/>
+                    <label>Email</label><br/>
                     <input 
                         type="email" 
                         name="email" 
@@ -113,6 +112,7 @@ const RegistrationSeller = ({history}) => {
                     />
                     <br/>
                     <br/>
+                    <label>Password</label><br/>
                     <input 
                         type="password" 
                         name="password" 

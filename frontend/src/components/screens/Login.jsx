@@ -1,5 +1,5 @@
 import axios from 'axios'
-import loginimg from '../../images/photoun.jpg';
+import students from '../../images/students.png';
 import {Link} from 'react-router-dom'
 import navlogo from '../../images/nav-logo.png';
 import {useDispatch} from "react-redux"
@@ -55,7 +55,7 @@ const Login = ({history}) => {
     return (
         <>
             <div className="image-col">
-                <img src={loginimg} alt="Welcome To Gude"/>
+                <img src={students} alt="Welcome To Gude"/>
             </div>
             <div className="form-col">
                 {error && <span className="error">{error}</span>}

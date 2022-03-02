@@ -53,14 +53,13 @@
 }
 
 .form-col .input-spacing {
-    flex-direction: row;
     display: flex;
-    gap: 10px 20px;
+    flex-direction: row;
+    gap: 20px 75px;
 }
 
 .form-col .input-design {
-    float:left;
-    width: 110%;
+    width: 170%;
     border-radius: 5px;
     border: 1px solid  #9e9e9e;
     line-height: 28px;
@@ -76,4 +75,24 @@
     border-radius: 5px;
     border: 1px solid  #9e9e9e;
     line-height: 30px;
+ }
+
+ @media screen and (max-width: 1280px) {
+    .image-col img {
+       display: none;
+    }
+
+    .form-col {
+        object-position: 50% 50%;
+        width: 100%;
+        height: auto;
+    }
+
+    .form-col .input-spacing {
+        flex-direction: column;
+    }
+
+    .form-col .input-design {
+        width: 100%;
+    }
  }

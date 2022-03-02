@@ -1,22 +1,15 @@
-import React from 'react';
-import {useRef} from "react";
-import {Link, Redirect} from 'react-router-dom'
-import loginimg from '../../images/photoun.jpg';
-import navlogo from '../../images/nav-logo.png';
-//import './reg.css';
-import axios from 'axios'
-import {loginsecond} from "../../Redux/LoginSecondRedux";
-import {useDispatch} from "react-redux"
-
-
-import {useState, useEffect} from 'react'
-
-
+import React, { useRef, useState, useEffect} from 'react';
+import {Link, Redirect} from 'react-router-dom';
 import {useHistory,} from "react-router";
+import {useDispatch} from "react-redux";
+import axios from 'axios';
+
+import './login.css';
+import students from '../../images/students.png';
+import navlogo from '../../images/nav-logo.png';
+import {loginsecond} from "../../Redux/LoginSecondRedux";
 
 const Loginseller = ({history}) => {
-
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -67,7 +60,7 @@ const Loginseller = ({history}) => {
     return (
          <>
             <div className="image-col">
-                <img src={loginimg} alt="Welcome To Gude"/>
+                <img src={students} alt="Welcome To Gude"/>
             </div>
             <div className="form-col">
                 {error && <span className="error">{error}</span>}
