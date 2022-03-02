@@ -11,6 +11,7 @@ import {SingleFileChange, uploadSingleFile} from '../pages/Books';
 import image from '../../assets/img.png';
 import image_1 from '../../assets/img_1.png';
 import image_2 from '../../assets/img_2.png';
+
 // Select Category Data
 const data = [
     {name: 'Freebies'},
@@ -24,32 +25,6 @@ const secondData = [
     {name: 'New'},
 ]
 const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
-    // const [url , setUrl]= useState(null)
-    // const [selects, setSelects] = useState('');
-    // const [singleFiles, setSingleFiles] = useState([]);
-    // const [cash,setCash] = useState(false);
-    // const [payPal,setPayPal] = useState(false);
-    // const [visa,setVisa] = useState(false);
-    // const [neg,setNeg] = useState(false);
-    // const [holdImg,setHoldImg] = useState(false);
-    // const getSingleFileslist = async () => {
-    //     try {
-    //         const fileslist = await getSingleFiles();
-    //         setSingleFiles(fileslist);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-    //
-    // useEffect(() => {
-    //     getSingleFileslist();
-    // }, []);
-
-    // Returned when the 'Books' field is chosen
-    // if (selects === 'Books') {
-    //     return <Books getsingle={() => getSingleFileslist()}/>
-    // }
-
     const [ISBNinput,setISBN] = useState(false);
     const [IMEIinput,setIMEI] = useState(false);
 
@@ -207,72 +182,9 @@ const ItmesToSell = ({SingleFileChange, uploadSingleFile}) => {
                         </div>
                     </div>
                 </div>
-                {/*<div className={'col-lg-6 bd'}>*/}
-                {/*    <div className={'item-to-sell-heading bd'}>Item To Sell</div>*/}
-                {/*    <select className={'form-control'}>*/}
-                {/*        <option>Select Category</option>*/}
-                {/*        <option>Electronics</option>*/}
-                {/*        <option>Freebies</option>*/}
-                {/*    </select>*/}
-                {/*</div>*/}
-                {/*<div className={'col-lg-6 bd'}></div>*/}
-            {/*    <select className="category" onChange={(e) => setSelects(e.target.value)}>*/}
-            {/*        <option>-- Select Category --</option>*/}
-            {/*        {data.map(item => {*/}
-            {/*            return <option>{item.name}</option>*/}
-            {/*        })}*/}
-            {/*    </select><br/>*/}
-            {/*    {singleFiles.map((file, index) =>*/}
-            {/*        <div>*/}
-            {/*            <img className="img-product" src={`${file.filePath}`} alt=''/>*/}
-            {/*        </div>*/}
-            {/*    )} <br/>*/}
-            {/*    <span className='img-product-span'>*/}
-            {/*     <div>*/}
-            {/*        <div>*/}
-            {/*            <label>Select Single File</label>*/}
-            {/*            <input type="file" name="file" id="file" onChange={(e) => SingleFileChange(e)}/>*/}
-            {/*            <button type="button" onClick={() => uploadSingleFile()}>Upload</button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    </span> <br/>*/}
-            {/*    <input className="input-item" type="text" placeholder="Enter Item Title"/><br/>*/}
-            {/*    <br/>*/}
-            {/*    <textarea className="textArea-item">Enter Item Description</textarea><br/>*/}
-            {/*    <select className="category">*/}
-            {/*        <option>-- Select Condition --</option>*/}
-            {/*        {secondData.map(item => {*/}
-            {/*            return <option>{item.name}</option>*/}
-            {/*        })}*/}
-            {/*    </select><br/>*/}
-            {/*    <input className="input-item" type="text" placeholder="Enter Item Price"/><br/>*/}
-            {/*    <input className="input-item" type="text" placeholder="Enter the number of items"/><br/>*/}
-            {/*    <input className="input-item" type="text" placeholder="Enter the Location"/><br/>*/}
-            {/*    <label>payment method </label><br/>*/}
-            {/*    <span className="buttons-payment"><button className="button-pay" type="submit">cash</button><button*/}
-            {/*        className="button-pay">paypal</button>*/}
-            {/*        <button className="button-pay">Visa</button><button*/}
-            {/*            className="button-pay">exchange/negotiate</button></span><br/>*/}
-            {/*    <span className="post-item"><button className="item-draft" type="submit">Save as draft</button>*/}
-            {/*        <button className="item-post" type="submit">Post</button>*/}
-            {/*    </span>*/}
-            {/*</div>*/}
-            {/*<div className="seller_profile-info">*/}
-            {/*    {singleFiles.map((file, index) =>*/}
-            {/*        <div>*/}
-            {/*            <img className="img-product" src={`${file.filePath}`} alt=''/>*/}
-            {/*        </div>*/}
-            {/*    )} <br/>*/}
-            {/*    <input className="input-item-seller" type="text" placeholder="Enter Item Title"/>*/}
-            {/*    <input className="input-item-seller" type="text" placeholder="Enter Item Price"/>*/}
-            {/*    <textarea className="textArea-item-seller">Enter Item Description</textarea><br/>*/}
-            {/*    <input className="input-item-seller" type="text" placeholder="Enter the number of items"/><br/>*/}
-            {/*    <input className="input-item-seller" type="text" placeholder="Enter the Location"/><br/>*/}
-            {/*    profile*/}
             </div>
         </div>
     );
 }
-
 
 export default ItmesToSell;

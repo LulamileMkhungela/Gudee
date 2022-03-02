@@ -1,19 +1,18 @@
-import axios from 'axios'
-import students from '../../images/students.png';
-import {Link} from 'react-router-dom'
-import navlogo from '../../images/nav-logo.png';
-import {useDispatch} from "react-redux"
-import './login.css'
 import {useState, useEffect, useRef} from 'react';
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+import {useDispatch} from "react-redux"
+
+import './login.css';
+import students from '../../images/students.png';
+import navlogo from '../../images/nav-logo.png';
 import {login} from "../../Redux/LoginFirstRedux";
 
 const Login = ({history}) => {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const dispatch = useDispatch();
-
 
     const loginHandler = async (e) => {
         e.preventDefault();
@@ -31,7 +30,7 @@ const Login = ({history}) => {
 
         try {
             const {data} = await axios.post(
-                "http://localhost:5000/api/auth/login",
+                "/api/auth/login",
                 {email, password},
                 config
             );
@@ -49,7 +48,7 @@ const Login = ({history}) => {
 
 
     const facebook = () => {
-        window.open("http://localhost:5000/auth/facebook", "_self");
+        window.open("/auth/facebook", "_self");
     };
 
     return (
@@ -87,7 +86,7 @@ const Login = ({history}) => {
                     />
                     <br />
                     <br />
-                    <span><Link className="form-link" to="/forgotpassword">Forgot Password?</Link></span><br/><br/>
+                    <Link className="form-link" to="/forgotpassword">Forgot Password?</Link><br/><br/>
                     <button className="login-btn" type="submit" value="submit">Login</button>
                 </form>
             </div>
