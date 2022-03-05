@@ -13,16 +13,14 @@ import DraftScreen from '../pages/DraftScreen';
 import SoldItemsScreen from '../pages/SoldItemsScreen';
 import ListingsScreen from '../pages/ListingsScreen';
 import OptionScreen from '../pages/OptionScreen';
+
 export default function Profile() {
     const [togglestate, SetTogglestate] = useState(1);
+
     const toggleTab = (index) => {
         SetTogglestate(index)
     }
-    const editHandler = () => {
-        <div className="pen-icon">
-            <button>Edit</button>
-        </div>
-    }
+    
     return (
         <>
             <Explore/>
