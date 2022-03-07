@@ -55,7 +55,7 @@ const ProductCategory = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const {data} = await axios.get(' http://localhost:5000/api/products');
+            const {data} = await axios.get('/api/products');
             setProducts(data);
             console.log(data);
         };

@@ -34,7 +34,7 @@ function Stationery() {
       <div className="page">
         <h1 className="products">Stationery</h1>
           <div className="button">
-            <Link to="/store"><img src={leftArrow} className="btn"/></Link>
+            <Link to="/home"><img src={leftArrow} className="btn"/></Link>
           </div>    
       </div>
       <div>
