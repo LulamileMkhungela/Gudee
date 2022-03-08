@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-
-
 const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -15,7 +13,6 @@ const userSchema = new mongoose.Schema({
     location: {
         type: String,
         default: null,
-
     },
     phonenumber: {
         type: Number,
@@ -35,7 +32,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your password!"]
     },
-
     avatar: {
         type: String,
         default: null
@@ -43,5 +39,4 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
-
 module.exports = mongoose.model("student", userSchema)

@@ -1,11 +1,11 @@
- POST http://localhost:5000/app/signup
+ POST http://localhost:5000/user/register
 Content-Type: application/json
 
 {
     
  "firstname":"Joseph",
  "lastname":"joey",
-"email":"jhhhhm",
+"email":"molapo.molapo77@gmail.com",
 "password":"josejosey"
 
 }

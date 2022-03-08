@@ -27,9 +27,10 @@ export const Explore = () => {
             })
     }
 
-    const quantity = useSelector(state => state.cart.quantity)
-    const wishquantity = useSelector(state => state.wishlist.quantity)
-
+    const quantity = useSelector(state => state.cart.quantity);
+    const wishquantity = useSelector(state => state.wishlist.quantity);
+    
+     
     const logoutHandler = () => {
         localStorage.removeItem("authToken");
         history.push("/login");
@@ -42,7 +43,7 @@ export const Explore = () => {
                 <nav className='sidebawrapper'>
                     <ul className='sidebarList'>
                         <li className='sidebarListItem'><NavLink to="/store-electronics" activeClassName="selectedLink">
-                            <i class="fa fa-tablet"></i>Electronics</NavLink></li>
+                            <i className="fa fa-tablet"></i>Electronics</NavLink></li>
                         <li className='sidebarListItem'><NavLink to="/store-outdoors" activeClassName="selectedLink">
                             <i class="fas fa-campground"></i>Outdoors</NavLink></li>
                         <li className='sidebarListItem'><NavLink to="/store-gaming" activeClassName="selectedLink">

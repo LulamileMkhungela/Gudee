@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './global.css';
+import { Payments } from  './components/screens/Payments';
 import  Payfast from './components/screens/Payfast';
 import ForgotPassword from './components/screens/ForgotPassword';
 import ResetPassword from './components/screens/ResetPassword';
@@ -53,6 +54,7 @@ const App = () => {
                 <Route path="/additemstosell" component={ItmesToSell}/>
                 <Route path="/about" component={About}/>
                 <Route path="/payfast" component={Payfast}/>
+                <Route path="/payments" component={Payments}/>
                 <Route path="/store-electronics" component={Electronics}/>
                 <Route path="/store-freebies" component={Freebies}/>
                 <Route path="/store-gaming" component={Gaming}/>
