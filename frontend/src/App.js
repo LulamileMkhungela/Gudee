@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './global.css';
+import { Payments } from  './components/screens/Payments';
 import  Payfast from './components/screens/Payfast';
 import ForgotPassword from './components/screens/ForgotPassword';
 import ResetPassword from './components/screens/ResetPassword';

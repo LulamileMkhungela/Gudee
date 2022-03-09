@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-
 import './addedtocard.css';
 import capture from '../../images/Capture.PNG';
 import navlogo from '../../images/nav-logo.png';
 import capture2 from '../../images/Capture2.PNG';
 import Explore from './NavExplore';
+import {useHistory} from 'react-router-dom';
 import Product from './ProductCategory';
 import StripeCheckout from "react-stripe-checkout";
 import {remove} from '../../Redux/cartRedux';
 import laptop from '../../images/laptop.jpg';
-
 const AddedtoCard = () => {
+    let history = useHistory();
     const cart = useSelector((state) => state.cart);
     const [stripeToken, setStripeToken] = useState(null);
     const onToken = (token) => {
         setStripeToken(token);
     };
-
     console.log(cart);
     console.log(stripeToken);
-
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
-
     const handleQuantity = (type) => {
         if (type === "dec") {
             quantity > 1 && setQuantity(quantity - 1);
@@ -31,11 +28,13 @@ const AddedtoCard = () => {
             setQuantity(quantity + 1);
         }
     };
-
     const handleDelete = () => {
         dispatch(remove())
     };
+    const handleCheckout = () => {
+        history.push("/payments");
 
+    };
     const [products] = useState([
         {
             id: "1",
@@ -43,7 +42,6 @@ const AddedtoCard = () => {
             cost: 'R200.99',
             description: 'dell i5 model with good results',
             image: '{capture}'
-
         },
         {
             id: "2",
@@ -51,7 +49,6 @@ const AddedtoCard = () => {
             cost: 'R1900.99',
             description: 'second hand cellphone',
             image: '{capture2}'
-
         },
         {
             id: "3",
@@ -59,10 +56,8 @@ const AddedtoCard = () => {
             cost: 'R1900.99',
             description: 'second hand cellphone',
             image: 'https://www.wikihow.com/Get-the-URL-for-Pictures#/Image:Get-the-URL-for-Pictures-Step-4-Version-6.jpg'
-
         }
     ]);
-
     return (
         <>
             <Explore/>
@@ -83,7 +78,7 @@ const AddedtoCard = () => {
                             <button className="btn-click" onClick={() => handleQuantity("dec")}> - </button>
                             <span> {quantity} </span>
                             <button className="btn-click" onClick={() => handleQuantity("inc")}> +</button>
-                            <button className="btn-proceed"> Proceed Checkout</button>
+                            <button className="btn-proceed-sum" onClick={() => handleCheckout()}> Proceed Checkout</button>
                             <button className="trash" onClick={() => handleDelete("inc")}><i class="fa fa-trash-o"></i></button>
                         </div>
                     </div>
@@ -104,11 +99,10 @@ const AddedtoCard = () => {
                     token={onToken}
                     stripeKey="pk_test_51K6EQBGLbSOImgg0zEVMFtL7k9yVGiru6zA8UVFjdUJdNVGWlVgpZ7cgRgjH6q2119v4KdzSQvHnbPWhdDJMBVsX00oMdPVXYc"
                 >
-                <button className="btn-proceed-sum">Proceed Checkout</button>
+                <button className="btn-proceed-sum" onClick={() => handleCheckout()}> Proceed Checkout</button>
                 </StripeCheckout>
             </div>
         </>
     )
 }
-
 export default AddedtoCard
