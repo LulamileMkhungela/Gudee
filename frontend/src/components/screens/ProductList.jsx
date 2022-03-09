@@ -47,7 +47,14 @@ export const ProductList = () => {
                         <div className="body-content">
                             <h5 className="product-elements">Product Name</h5>
                             <p className="availability"><i>Availability/state</i></p>
-                            <p className="sku-number">sku number</p>
+                            <div className="same-line-rand">
+                                <p className="sku-number">sku number</p>
+                                <p className="price">R450</p>
+                            </div>
+                            <div className="date">
+                                <p className="location">Location</p>
+                                <p className="listed-on">Listed on: 10/03/2022</p>
+                            </div>
                         </div>
                         <div className="product-information">
                             <ul>
