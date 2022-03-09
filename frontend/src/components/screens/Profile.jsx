@@ -24,53 +24,62 @@ export default function Profile() {
     return (
         <>
             <Explore/>
-            {/* cover image, profile picture and name will be changed when connecting to the back-end */}
-            <img src={backImage} alt="Welcome Gude" className="profileback"/>
-            <div className="image-size"><img src={mask} alt="Cinque Terre"/></div>
-            <div><h1 className="profile-name">Thabiso Hlatshwayo</h1></div>
-            <center>
-                <hr className="line" />
-            </center>
-            <div className="profile-info">
+            <div className="profille-container">
+                {/* cover image, profile picture and name will be changed when connecting to the back-end */}
+                <div className="hidden-div"></div>
                 <div>
-                    <div
-                        className={togglestate === 1 ? "tab-active" : "tabs"}
-                        onClick={() => toggleTab(1)}>
-                        Your listings
-                    </div>
-                    <div
-                        className={togglestate === 2 ? "tab-active" : "tabs"}
-                        onClick={() => toggleTab(2)}>
-                        Drafts
-                    </div>
-                    <div className={togglestate === 3 ? "tab-active" : "tabs"}
-                         onClick={() => toggleTab(3)}>
-                        About
-                    </div>
-                    <div className={togglestate === 4 ? "tab-active" : "tabs"}
-                         onClick={() => toggleTab(4)}>
-                        Sold items
-                    </div>
-                    <div className={togglestate === 5 ? "tab-active" : "tabs"}
-                         onClick={() => toggleTab(5)}>
-                        Options
-                    </div>
+                    <img src={backImage} alt="Welcome Gude" className="profileback"/>
+                    <Link to='/home' className="arrow">
+                        <img src={leftArrow} className="btn"/>
+                        <p>Back</p>
+                    </Link>
                 </div>
-                <div>
-                    <div className={togglestate === 1 ? "content  active-content" : "content"}>
-                        <ListingsScreen />
+                <div className="image-size"><img src={mask} alt="Cinque Terre"/></div>
+                <div><h1 className="profile-name">Thabiso Hlatshwayo</h1></div>
+                <center>
+                    <hr className="line" />
+                </center>
+                <div className="profile-info">
+                    <div>
+                        <div
+                            className={togglestate === 1 ? "tab-active" : "tabs"}
+                            onClick={() => toggleTab(1)}>
+                            Your listings
+                        </div>
+                        <div
+                            className={togglestate === 2 ? "tab-active" : "tabs"}
+                            onClick={() => toggleTab(2)}>
+                            Drafts
+                        </div>
+                        <div className={togglestate === 3 ? "tab-active" : "tabs"}
+                            onClick={() => toggleTab(3)}>
+                            About
+                        </div>
+                        <div className={togglestate === 4 ? "tab-active" : "tabs"}
+                             onClick={() => toggleTab(4)}>
+                            Sold items
+                        </div>
+                        <div className={togglestate === 5 ? "tab-active" : "tabs"}
+                             onClick={() => toggleTab(5)}>
+                            Options
+                        </div>
                     </div>
-                    <div className={togglestate === 2 ? "content  active-content" : "content"}>
-                        <DraftScreen />
-                    </div>
-                    <div className={togglestate === 3 ? "content  active-content" : "content"}>
-                        <AboutScreen />
-                    </div>
-                    <div className={togglestate === 4 ? "content  active-content" : "content"}>
-                        <SoldItemsScreen />
-                    </div>
-                    <div className={togglestate === 5 ? "content  active-content" : "content"}>
-                        <OptionScreen />
+                    <div>
+                        <div className={togglestate === 1 ? "content  active-content" : "content"}>
+                            <ListingsScreen />
+                        </div>
+                        <div className={togglestate === 2 ? "content  active-content" : "content"}>
+                            <DraftScreen />
+                        </div>
+                        <div className={togglestate === 3 ? "content  active-content" : "content"}>
+                            <AboutScreen />
+                        </div>
+                        <div className={togglestate === 4 ? "content  active-content" : "content"}>
+                            <SoldItemsScreen />
+                        </div>
+                        <div className={togglestate === 5 ? "content  active-content" : "content"}>
+                            <OptionScreen />
+                        </div>
                     </div>
                 </div>
             </div>
