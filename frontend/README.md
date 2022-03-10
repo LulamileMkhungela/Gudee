@@ -6,6 +6,9 @@ Responsive pages:
 4. registerseller.jsx
 5. SideNavigationBar jsx
 
+#####################################
+3 more radio screen added
+
 #######################################
 Challenges.
 Top navigation bar: 
