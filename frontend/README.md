@@ -7,7 +7,7 @@ Responsive pages:
 5. SideNavigationBar jsx
 
 #####################################
-3 more radio screen added
+3 more radio screen added: Finish up the payment screen
 
 #######################################
 Challenges.
