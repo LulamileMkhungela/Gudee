@@ -50,16 +50,15 @@ const App = () => {
                 <Route path="/forgotpassword" component={ForgotPassword}/>
                 <Route path="/product" component={Product}/>
                 <Route path="/profile" component={Profile}/>
-                <Route path="/store" component={ProductList}/>
+                <Route path="/home" component={ProductList}/>
                 <Route path="/additemstosell" component={ItmesToSell}/>
                 <Route path="/about" component={About}/>
                 <Route path="/payfast" component={Payfast}/>
-                <Route path="/payments" component={Payments}/>
-                <Route path="/store-electronics" component={Electronics}/>
-                <Route path="/store-freebies" component={Freebies}/>
-                <Route path="/store-gaming" component={Gaming}/>
-                <Route path="/store-stationery" component={Stationery}/>
-                <Route path="/store-outdoors" component={Outdoors}/>
+                <Route path="/electronics" component={Electronics}/>
+                <Route path="/freebies" component={Freebies}/>
+                <Route path="/gaming" component={Gaming}/>
+                <Route path="/stationery" component={Stationery}/>
+                <Route path="/outdoors" component={Outdoors}/>
                 <Route path="/messages" component={Messenger}/>
                 <Route component={PageNotFound}/>
                 <Route path="/user/activate/:activation_token" component={ActivationEmail} exact/>
