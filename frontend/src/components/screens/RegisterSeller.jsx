@@ -52,9 +52,7 @@ const RegistrationSeller = ({history}) => {
         }
     };
 
-    const facebook = () => {
-        window.open("http://localhost:5000/auth/facebook", "_self");
-    };
+
 
     return (
         <>
@@ -66,13 +64,8 @@ const RegistrationSeller = ({history}) => {
                 <form onSubmit={registerHandler}>
                     <img src={navlogo} alt="Welcome Gude"/>
                     <h2>Join Gude Marketplace</h2>
-                    <p>Already have an account? <i><Link to="/login">Login</Link></i></p> <br/>
-                    <button 
-                        className="facebook-btn" 
-                        type="button" onClick={facebook}
-                    ><i className="fa fa-facebook"></i>
-                    Register with facebook</button>
-                    <br/><br/>
+                    <p>Already have an account? <i><Link to="/loginseller">Login</Link></i></p> <br/>
+                 
                     <div className="input-spacing">
                         <div>
                             <label>First Name</label><br/>
