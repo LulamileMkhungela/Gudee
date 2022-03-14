@@ -25,7 +25,7 @@ const Forgot = ({histrory}) => {
 
         try {
             const {data} = await axios.post(
-                "/api/auth/forgotpassword",
+                "/user/forgot",
                 {email},
                 config
             );
